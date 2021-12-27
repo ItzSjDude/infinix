@@ -14,6 +14,8 @@ from pathlib import Path
 import re, time, math, friendly
 import sys
 
+CMD_LIST = {};PikaAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
+
 defcmd= "\."
 cmd1=pget("alpha", "cmdhandler")
 cmd2=pget("beta", "cmdhandler")
@@ -41,6 +43,7 @@ if cmd4:
 else: 
    cmd = defcmd
  
+
 defscmd = "\!" 
 
 if scmd1: 
