@@ -114,7 +114,7 @@ def ItzSjDude(**args):
         if infx:
             if pattern.startswith("^/"):
                 infxtg = pattern.replace("^/", "\\/")
-                args["pattern"] = re.compile(pikatg)
+                args["pattern"] = re.compile(infxtg)
             elif pattern.startswith("\\#"):
                 args["pattern"] = re.compile(pattern)
             else:
