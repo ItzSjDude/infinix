@@ -1,4 +1,4 @@
-infinix=INFINIX
+from . import INFINIX as infinix
 from telethon import *
 from importlib.util import *
 import logging
