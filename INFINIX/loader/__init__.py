@@ -23,7 +23,7 @@ def pika_assistant(_infxsst=None):
     infxast[_infxsst] = asst; modules["infinix"+_infxsst] = asst; tgbot.infxast[_infxsst] = asst; spec.loader.exec_module(asst); logpa.info("🔥Imported "+_infxsst)
            
 
-def pika_plugins(_infxmod=None):
+def infx_plugins(_infxmod=None):
     from pathlib import Path 
     _rx=pget("alpha", "cmdhandler")
     if _rx: 
@@ -35,8 +35,8 @@ def pika_plugins(_infxmod=None):
     spec = spec_from_file_location(name, path)
     _infx = module_from_spec(spec)
                                    #____infinix__Plugins__Loader____
-    userbot = infinix; _infx.bot = bot; _infx.Var = Var; _infx.rx = rx; _infx.ItzSjDude = ItzSjDude; _infx.pdb = pdb; _infx.Config = Var; _infx.borg = bot; _infx.logger = logging.getLogger(_infxmod)
-    modules["userbot"] = infinix; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); bot.infxcmd[_infxmod] = _infx; modules["infinix"+_infxmod] = _infx; logpl.info("🔥Imported "+_infxmod)
+    userbot = INFINIX; _infx.bot = bot; _infx.Var = Var; _infx.rx = rx; _infx.ItzSjDude = ItzSjDude; _infx.pdb = pdb; _infx.Config = Var; _infx.borg = bot; _infx.logger = logging.getLogger(_infxmod)
+    modules["userbot"] = INFINIX; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); bot.infxcmd[_infxmod] = _infx; modules["infinix"+_infxmod] = _infx; logpl.info("🔥Imported "+_infxmod)
 
 def load_ext_module(shortname):
     if shortname.endswith("_"):
