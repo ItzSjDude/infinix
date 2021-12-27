@@ -10,7 +10,7 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "is_pika_tg"
+          find: "is_infx_tg"
           replace: "is_infx_tg"
           
       - name: Create Pull Request
