@@ -10,17 +10,6 @@ from telethon.errors.rpcerrorlist import *
 from logging import getLogger
 infxlog = getLogger("Infinix Login")
 
-from telethon import TelegramClient
-import asyncio
-import os
-import sys
-from ...core import pdb, pset
-from ...clients import *
-from telethon import TelegramClient, events, custom
-from telethon.sessions import StringSession
-from telethon.errors.rpcerrorlist import *
-from logging import getLogger
-pikalog = getLogger("LOGIN_ASSISTENT")
 
 # ----------------------------------Constants--------------------------------
 _phone_ = "**Login Assistent** For {}\n\nEnter your Phone no. On which u want @PikachuUserbot 😛\nIf Indian No. **+91xxxxxxxxxx** else use **Country Code**"
