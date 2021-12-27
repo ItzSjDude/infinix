@@ -41,10 +41,7 @@ async def infx_login(_infx_):
                 return
             async with tg_client.conversation(tglogin.chat_id) as inflogin:
                 await inflogin.send_message(_phone_.format(_cn_))
-                infxget = inflogin.wait_event(events.NewMessage(
-                    chats=tglogin.chat_id
-                ))
-                infxres = await infxget
+                infxres = await inflogin.get_response()
                 phone = infxres.message.message.strip()
                 infx_client = TelegramClient(
                     StringSession(),
@@ -56,11 +53,8 @@ async def infx_login(_infx_):
                 await inflogin.send_message(_verif_.format(_cn_))
                 infxlog.info(
                     "{}: Please enter the verification code, by giving space. If your code is 6969 then Enter 6 9 6 9".format(_cn_))
-                response = inflogin.wait_event(events.NewMessage(
-                    chats=tglogin.chat_id
-                ))
-                response = await response
-                r_code = response.message.message.strip()
+                rap=await inflogin.get_response()
+                r_code = rsp.message.message.strip()
                 _2vfa_code_ = None
                 r_code = "".join(r_code.split(" "))
                 try:
@@ -78,11 +72,8 @@ async def infx_login(_infx_):
                     infxlog.info(
                         "{}: 2-Step verification Protected Account, Enter Your Password".format(_cn_))
                     await inflogin.send_message(_2vfa_.format(_cn_))
-                    response = inflogin.wait_event(events.NewMessage(
-                        chats=tglogin.chat_id
-                    ))
-                    response = await response
-                    _2vfa_code_ = response.message.message.strip()
+                    rspp = await inflogin.get_response()
+                    _2vfa_code_ = rrpp.message.message.strip()
                     await infx_client.sign_in(password=_2vfa_code_)
                     infx_me = await infx_client.get_me()
                     infxlog.info(
