@@ -24,7 +24,8 @@ def infx_assistant(_infxsst=None):
            
 
 def infx_plugins(_infxmod=None):
-    from pathlib import Path 
+    from pathlib import Path
+    from ..database import pdb
     _rx=pget("alpha", "cmdhandler")
     if _rx: 
         rx = _rx
