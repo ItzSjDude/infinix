@@ -1,6 +1,6 @@
 from var import Var
 from ...core import pget
-from ...clients import bot, bot2, bot3, bot4, tgbot
+from ...infxcl import *
     
 async def auto_var(_infx_, value=None):
   __id__=await get_infx_id(_infx_)
