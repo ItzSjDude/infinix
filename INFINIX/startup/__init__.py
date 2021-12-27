@@ -16,7 +16,7 @@ infxlog = getLogger("Startup")
 #________Clients_________
 #________________________
 
-async def infinix(): 
+async def StartInfinix(): 
     from ...database import pdb
     if not bot:
         infxlog.info(
@@ -90,3 +90,5 @@ async def infinix():
             await bot3.run_until_disconnected()
         if bot4:
             await bot4.run_until_disconnected()
+
+__all__=["StartInfinix"]
