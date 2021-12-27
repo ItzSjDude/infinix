@@ -12,6 +12,7 @@ jobs:
         with:
           find: "is_infx_tg"
           replace: "is_infx_tg"
+          include: "plugins/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
