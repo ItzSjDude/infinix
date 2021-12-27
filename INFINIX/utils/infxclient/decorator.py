@@ -81,7 +81,8 @@ else:
 
 def ItzSjDude(**args):
     from inspect import stack
-    from infinix import pget
+
+
     _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
     stk = stack()
