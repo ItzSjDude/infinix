@@ -54,7 +54,8 @@ async def infx_login(_PiKa_):
                 )
 
                 await pika_client.connect()
-                await pika_client.send_code_request(phone)
+                senx=await pika_client.send_code_request(phone)
+                pikalog.info(senx)
                 await pikulogin.send_message(_verif_.format(_cn_))
                 pikalog.info(
                     "{}: Please enter the verification code, by giving space. If your code is 6969 then Enter 6 9 6 9".format(_cn_))
