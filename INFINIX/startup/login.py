@@ -49,7 +49,10 @@ async def infx_login(_infx_):
                     api_hash=pdb.Api_hash
                 )
                 await infx_client.connect()
-                await infx_client.send_code_request(phone)
+                try: 
+                    await infx_client.send_code_request(phone)
+                except Exception as e:
+                    infxlog.info(str(e))
                 await inflogin.send_message(_verif_.format(_cn_))
                 infxlog.info(
                     "{}: Please enter the verification code, by giving space. If your code is 6969 then Enter 6 9 6 9".format(_cn_))
