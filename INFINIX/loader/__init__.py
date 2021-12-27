@@ -11,7 +11,7 @@ from logging import getLogger
 logpl = getLogger("Plugins:")
 logpa = getLogger("Assistant:")
 
-def pika_assistant(_infxsst=None):
+def infx_assistant(_infxsst=None):
     rx = "!"
     import plugins.__init__ as _Modules
     asstpath = _asstpath(f"./infinix/Assistant/plugins/{_infxsst}.py")
