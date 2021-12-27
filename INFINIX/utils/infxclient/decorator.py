@@ -8,10 +8,7 @@ from asyncio import create_subprocess_shell as asyncsubshell, subprocess as asyn
 from os import remove
 from traceback import format_exc
 from ...core import * 
-from ...clients import *
-from ...resources.reqfxns import *
-from sys import *
-from var import Var
+from ...infxcl import *
 from pathlib import Path
 import re, time, math, friendly
 import sys
