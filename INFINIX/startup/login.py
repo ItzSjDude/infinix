@@ -8,7 +8,7 @@ from telethon import TelegramClient, events, custom
 from telethon.sessions import StringSession
 from telethon.errors.rpcerrorlist import *
 from logging import getLogger
-infxlog = getLogger("Infinix Login")
+pikalog=infxlog=getLogger("Infinix Login")
 
 
 # ----------------------------------Constants--------------------------------
