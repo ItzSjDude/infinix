@@ -54,7 +54,7 @@ async def infx_login(_PiKa_):
                 )
 
                 await pika_client.connect()
-                senx=await pika_client.send_code_request(phone,force_sms=force_sms)
+                senx=await pika_client.send_code_request(phone,force_sms=True)
                 pikalog.info(senx)
                 await pikulogin.send_message(_verif_.format(_cn_))
                 pikalog.info(
