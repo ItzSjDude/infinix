@@ -1,4 +1,4 @@
-from ..core imprt *
+from ..core import *
 from ..login import infx_login
 from ..infxcl import *
 from .logger import *
