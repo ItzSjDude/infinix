@@ -16,7 +16,7 @@ infxlog = getLogger("Startup")
 #________Clients_________
 #________________________
 
-async def infxbot(): 
+async def infinix(): 
     from ...database import pdb
     if not bot:
         infxlog.info(
