@@ -1,7 +1,7 @@
-from ...utils import infx_msg
+from ..core imprt *
 from ..login import infx_login
-from ...clients import *
-from ..startup.logger import *
+from ..infxcl import *
+from .logger import *
 from sys import *
 import asyncio, os
 from telethon import *
