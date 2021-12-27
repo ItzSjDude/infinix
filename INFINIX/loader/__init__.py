@@ -4,7 +4,7 @@ import logging
 import sys    
 from sys import modules
 import INFINIX
-from INFINIX.core *
+from INFINIX.core import *
 import INFINIX.utils as _utilz
 from pathlib import Path as _asstpath
 from logging import getLogger
