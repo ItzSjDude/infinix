@@ -1,8 +1,7 @@
 from telethon import *
 from importlib.util import *
 import logging
-import sys
-from var import Var           
+import sys    
 from sys import modules
 import INFINIX
 from INFINIX import bot, tgbot, infxtgbot, ItzSjDude
