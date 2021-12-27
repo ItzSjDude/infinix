@@ -2,8 +2,8 @@ from telethon import TelegramClient
 import asyncio
 import os
 import sys
-from ...core import pdb, pset
-from ...clients import *
+from ..core import pdb, pset
+from ..infxcl import *
 from telethon import TelegramClient, events, custom
 from telethon.sessions import StringSession
 from telethon.errors.rpcerrorlist import *
