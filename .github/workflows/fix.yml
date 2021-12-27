@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
