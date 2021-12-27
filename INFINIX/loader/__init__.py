@@ -1,14 +1,13 @@
-from . import INFINIX as infinix
 from telethon import *
 from importlib.util import *
 import logging
 import sys
 from var import Var           
 from sys import modules
-import infinix
-from infinix import bot, tgbot, infxtgbot, ItzSjDude
-from infinix.core import pdb, pget
-import infinix.utils as _utilz
+import INFINIX
+from INFINIX import bot, tgbot, infxtgbot, ItzSjDude
+from INFINIX.core import pdb, pget
+import INFINIX.utils as _utilz
 from pathlib import Path as _asstpath
 from logging import getLogger
 logpl = getLogger("Plugins:")
