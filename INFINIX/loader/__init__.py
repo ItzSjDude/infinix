@@ -4,8 +4,7 @@ import logging
 import sys    
 from sys import modules
 import INFINIX
-from INFINIX import bot, tgbot, ItzSjDude
-from INFINIX.core import pdb, pget
+from INFINIX.core *
 import INFINIX.utils as _utilz
 from pathlib import Path as _asstpath
 from logging import getLogger
