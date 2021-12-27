@@ -51,7 +51,7 @@ async def infx_login(_infx_):
                     api_id=pdb.Api_id,
                     api_hash=pdb.Api_hash
                 )
-
+                await infx_client.connect()
                 await infx_client.send_code_request(phone)
                 await inflogin.send_message(_verif_.format(_cn_))
                 infxlog.info(
