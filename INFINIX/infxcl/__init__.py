@@ -1,4 +1,4 @@
-from infxbot.core import gpcid, pdb
+from INFINIX.core import gpcid, pdb
 import os
 
 #__________Clients___________
