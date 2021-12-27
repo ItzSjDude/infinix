@@ -1,5 +1,5 @@
 from ..core import *
-from ..login import infx_login
+from .login import infx_login
 from ..infxcl import *
 from .logger import *
 from sys import *
