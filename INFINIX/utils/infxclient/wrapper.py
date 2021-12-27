@@ -1,4 +1,4 @@
-from ...core import pget
+from ...database import pget
 from ...infxcl import *
     
 async def auto_var(_infx_, value=None):
