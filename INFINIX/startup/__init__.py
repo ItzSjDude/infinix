@@ -52,7 +52,7 @@ async def StartInfinix():
                 infxlog.info(_logstr2_.format("multiclient3")); msg += _logstr2_.format("multiclient3") + "\n\n"; await infx_msg(_loginfx, msg); await infx_login("delta")
 
         def __load_plugs__():
-            from ...loader import infx_plugins, infx_assistant
+            from ..loader import infx_plugins, infx_assistant
             if tgbot: 
                 for name in files:
                     with open(name) as f:
