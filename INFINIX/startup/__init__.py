@@ -17,7 +17,7 @@ infxlog = getLogger("Startup")
 #________________________
 
 async def StartInfinix(): 
-    from ...database import pdb
+    from ..database import pdb
     if not bot:
         infxlog.info(
            "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.Bf_uname))
