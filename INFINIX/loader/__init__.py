@@ -22,7 +22,7 @@ def infx_assistant(_infxsst=None):
     spec = spec_from_file_location(asstname, asstpath)
     asst = module_from_spec(spec)
                                #____infinix__Assistant__Plugins__Loader____
-    userbot = infinix; asst.bot = bot; asst.tgbot = tgbot; asst.rx = rx; asst.ItzSjDude = ItzSjDude; asst.pdb = pdb; asst.infxtgbot = infxtgbot; modules['Asst_modules'] = _Modules       
+    userbot = infinix; asst.bot = bot; asst.tgbot = tgbot; asst.rx = rx; asst.Infinix = Infinix; asst.pdb = pdb; asst.infxtgbot = infxtgbot; modules['Asst_modules'] = _Modules       
     infxast[_infxsst] = asst; modules["infinix"+_infxsst] = asst; tgbot.infxast[_infxsst] = asst; spec.loader.exec_module(asst); logpa.info("🔥Imported "+_infxsst)
            
 
@@ -39,7 +39,7 @@ def infx_plugins(_infxmod=None):
     spec = spec_from_file_location(name, path)
     _infx = module_from_spec(spec)
                                    #____infinix__Plugins__Loader____
-    userbot = INFINIX; _infx.bot = bot; _infx.rx = rx; _infx.ItzSjDude = ItzSjDude; _infx.pdb = pdb; _infx.borg = bot; _infx.logger = logging.getLogger(_infxmod)
+    userbot = INFINIX; _infx.bot = bot; _infx.rx = rx; _infx.Infinix = Infinix; _infx.pdb = pdb; _infx.borg = bot; _infx.logger = logging.getLogger(_infxmod)
     modules["userbot"] = INFINIX; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); bot.infxcmd[_infxmod] = _infx; modules["infinix"+_infxmod] = _infx; logpl.info("🔥Imported "+_infxmod)
 
 def load_ext_module(shortname):

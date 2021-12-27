@@ -6,7 +6,7 @@ TGBOT_USERS = set(
     int(x) for x in os.environ.get(
         "BOT_USERS",
         "779890498").split())
-# ©ItzSjDude
+# ©Infinix
 
 
 def infxtgbot(infx=None, silent=None):

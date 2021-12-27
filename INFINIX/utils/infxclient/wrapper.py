@@ -48,18 +48,18 @@ async def infx_msg(_infx, text, _infx_=None, parse_mode=None, link_preview=None)
           return await _reply.reply(text, parse_mode=parse_mode,link_preview=link_preview)
       if not _reply: 
           return await _infx.reply(text, parse_mode=parse_mode,link_preview=link_preview)
-#©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/> 
+#©Infinix </Kang/Copy with Credits else u will be called ultra gey/> 
 async def is_infxtg(_infx_=None):
   _infx = await _infx_.client.get_me()
   if _infx.id== tgbot.uid:
       return True
 
-#©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/>
+#©Infinix </Kang/Copy with Credits else u will be called ultra gey/>
 async def get_infx_id(_infx):
   _infx_= await _infx.client.get_me() 
   return _infx_.id 
 
-#©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/>
+#©Infinix </Kang/Copy with Credits else u will be called ultra gey/>
 async def get_infx_tg(_infx_): 
   tg_id = await get_infx_id(_infx_)
   cache=[]

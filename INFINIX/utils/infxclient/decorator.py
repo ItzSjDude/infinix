@@ -82,7 +82,7 @@ if pdb.Dsudo is not None:
 else: 
    Dsudo=__st__
 
-def ItzSjDude(**args):
+def Infinix(**args):
     from inspect import stack
 
 
@@ -360,4 +360,4 @@ class Loader():
         if bot4:
           bot4.add_event_handler(func, events.NewMessage(**args))
         
-__all__=['ItzSjDude', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
+__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
