@@ -1,4 +1,3 @@
-from var import Var
 from ...core import pget
 from ...infxcl import *
     
