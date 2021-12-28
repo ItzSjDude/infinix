@@ -190,7 +190,7 @@ def Infinix(**args):
             except BaseException as e:
                 infxlog.exception(e)
                 if not disable_errors:
-                    from .wrapper import auto_var
+                    from .wrapper import infxgvar
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**Sorry, I encountered a error!**\n"
@@ -209,7 +209,7 @@ def Infinix(**args):
                     ftext += "\nDate: " + date
                     ftext += "\nGroup ID: " + str(check.chat_id)
                     ftext += "\nSender ID: " + str(check.sender_id)
-                    ftext += "\nClient Name: " + str(await auto_var(check)) 
+                    ftext += "\nClient Name: " + str(await infxgvar(check)) 
                     ftext += "\n\nEvent Trigger:\n"
                     ftext += str(check.text)
                     ftext += "\n\nTraceback info:\n"
