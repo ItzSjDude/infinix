@@ -7,4 +7,4 @@ from .core import *
 import time
 UpTime = time.time()
 rawtm={}
-infver="1.1 Initial"
+infvr="1.1 Initial"
