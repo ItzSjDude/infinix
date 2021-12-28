@@ -80,4 +80,15 @@ async def get_infx_tg(_infx_):
   if tg_id == tgbot.uid: 
       return True 
 
-__all__=['infx_msg', 'is_infxtg', 'get_infx_tg', 'get_infx_id', 'infxgvar']
+async def infchvar(self,var,msgid=bool):
+  svar=await infxgvar(self,var)
+  if not svar:
+    entit = (await self.client.get_entity("@InfinixResources")).id 
+    return await self.client.get_messages(entity=entit,ids=int(msgid))
+  elif svar:
+     entit = pdb.Botlog_chat
+     return await self.client.get_messages(entity=entit,ids=int(svar))
+  else: 
+    return 
+
+__all__=['infx_msg', 'is_infxtg', 'get_infx_tg', 'get_infx_id', 'infxgvar','infchvar']
