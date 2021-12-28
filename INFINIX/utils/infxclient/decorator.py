@@ -7,6 +7,7 @@ from time import gmtime, strftime
 from asyncio import create_subprocess_shell as asyncsubshell, subprocess as asyncsub
 from os import remove
 from traceback import format_exc
+from ...startup.logger import *
 from ...core import * 
 from ...database import *
 from ...infxcl import *
