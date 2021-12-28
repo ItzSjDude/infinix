@@ -218,7 +218,8 @@ def Infinix(**args):
                     ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
                     command = "git log --pretty=format:\"%an: %s\" -5"
                     ftext += "\n\n\nLast 5 commits:\n"
-                    result = str(friendly.explain_traceback())
+                    process = await asyncio.create_subprocess_shell(command,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)stdout, stderr = await process.communicate()
+                    result = str(stdout.decode().strip()) + str(stderr.decode().strip()) 
                     ftext += result
                     file = open("error.log", "w+")
                     file.write(ftext)
