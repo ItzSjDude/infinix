@@ -4,6 +4,7 @@ from telethon import *
 from pathlib import Path
 from traceback import format_exc
 from time import gmtime, strftime
+import asyncio
 from asyncio import create_subprocess_shell as asyncsubshell, subprocess as asyncsub
 from os import remove
 from traceback import format_exc
