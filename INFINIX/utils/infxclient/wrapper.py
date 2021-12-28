@@ -1,4 +1,4 @@
-from ...database import pget
+from ...database import *
 from ...infxcl import *
     
 async def infxgvar(_infx_, value=None):
