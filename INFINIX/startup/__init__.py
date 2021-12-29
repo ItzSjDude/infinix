@@ -29,7 +29,7 @@ async def StartInfinix():
 
         if pdb.Alpha:
             try:
-                await bot.start(); bot.me = await bot.get_me(); bot.infxcmd = {}; bot.uid = tutils.get_peer_id(bot.me); infxlog.info(_logstr_.format("mainclient")); msg += _logstr_.format("mainclient") + "\n\n"; await infx_msg(_loginfx, msg)
+                await bot.start(); bot.me = await bot.get_me(); bot.infx_cmd = {}; bot.uid = tutils.get_peer_id(bot.me); infxlog.info(_logstr_.format("mainclient")); msg += _logstr_.format("mainclient") + "\n\n"; await infx_msg(_loginfx, msg)
             except Exception as e:
                 infxlog.info(str(e)); infxlog.info(_logstr2_.format("mainclient")); msg += _logstr2_.format("mainclient") + "\n\n"; await infx_msg(_loginfx, msg); await infx_login("alpha")
 
