@@ -18,71 +18,33 @@ import sys
 infxlog = getLogger("Plugin Error?")
 CMD_LIST = {};PikaAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
 
-defcmd= "\."
+acmd=bcmd=gcmd=dcmd="\."
+sacmd=sbcmd=sgcmd=sdcmd="\!" 
+Asudo=Bsudo=Gsudo=Dsudo=int(1277919761)
+
 cmd1=pget("alpha", "cmdhandler")
 cmd2=pget("beta", "cmdhandler")
 cmd3=pget("gaama", "cmdhandler")
 cmd4=pget("delta", "cmdhandler")
-scmd1 = pget("alpha", "sudocmd")
-scmd2 = pget("beta", "sudocmd")
-scmd3 = pget("gaama", "sudocmd")
-scmd4 = pget("delta", "sudocmd")
+scmd1=pget("alpha", "sudocmd")
+scmd2=pget("beta", "sudocmd")
+scmd3=pget("gaama", "sudocmd")
+scmd4=pget("delta", "sudocmd")
 
-if cmd1:
-   acmd = f"\{cmd1}"
-else: 
-   acmd = defcmd
-if cmd2:
-   bcmd = f"\{cmd2}"
-else: 
-   bcmd = defcmd
-if cmd3:
-   gcmd = f"\{cmd3}"
-else: 
-   gcmd = defcmd
-if cmd4:
-   dcmd = f"\{cmd4}"
-else: 
-   cmd = defcmd
+if cmd1: acmd=f"\{cmd1}"
+if cmd2: bcmd=f"\{cmd2}"
+if cmd3: gcmd=f"\{cmd3}"
+if cmd4: dcmd=f"\{cmd4}"
  
+if scmd1: sacmd=f"\{scmd1}"
+if scmd2: sbcmd=f"\{cmd2}"
+if scmd3: sgcmd=f"\{scmd3}"
+if scmd4: sdcmd=f"\{scmd4}"
 
-defscmd = "\!" 
-
-if scmd1: 
-   sacmd = f"\{scmd1}"
-else: 
-   sacmd = defscmd
-if scmd2:
-   sbcmd = f"\{cmd2}"
-else: 
-   sbcmd = defscmd
-if scmd3:
-   sgcmd = f"\{scmd3}"
-else:
-   sgcmd = defscmd
-if scmd4:
-   sdcmd = f"\{scmd4}"
-else:
-   sdcmd = defscmd 
-
-
-__st__= int(1277919761)
-if pdb.Asudo is not None:
-   Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
-else: 
-   Asudo=__st__
-if pdb.Bsudo is not None: 
-   Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
-else: 
-   Bsudo=__st__
-if pdb.Gsudo is not None:
-   Gsudo = list(set(int(x) for x in (pdb.Gsudo).split(" ")))
-else: 
-   Gsudo=__st__
-if pdb.Dsudo is not None:
-   Dsudo = list(set(int(x) for x in (pdb.Dsudo).split(" ")))
-else: 
-   Dsudo=__st__
+if pdb.Asudo is not None: Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
+if pdb.Bsudo is not None: Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
+if pdb.Gsudo is not None: Gsudo=list(set(int(x) for x in (pdb.Gsudo).split(" ")))
+if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" ")))
 
 def Infinix(**args):
     from inspect import stack
@@ -90,12 +52,9 @@ def Infinix(**args):
 
     _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
-    stk = stack()
-    previous_stack_frame = stk[1]
-    file_test = Path(previous_stack_frame.filename)
+    file_test = Path((stack()[1]).filename)
     file_test = file_test.stem.replace(".py", "")
     pattern = args.get("pattern", None)
-    args.get('disable_edited', True)
     allow_sudo = args.get("allow_sudo", False)
     args.get('disable_edited', True)
     groups_only = args.get('groups_only', False)
