@@ -52,15 +52,13 @@ def Infinix(**args):
 
     _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
-    file_test = Path((stack()[1]).filename)
-    file_test = file_test.stem.replace(".py", "")
+    file_test = Path((stack()[1]).filename).stem.replace(".py", "")
     pattern = args.get("pattern", None)
     allow_sudo = args.get("allow_sudo", False)
     args.get('disable_edited', True)
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
-    disable_errors = args.get("disable_errors", False)
     infx = args.get("infx", False)
     sudo = args.get("sudo", False)
     lol=True
@@ -134,8 +132,6 @@ def Infinix(**args):
             if not trigger_on_fwd and check.fwd_from:
                 return
             if check.via_bot_id and not trigger_on_inline:
-                return
-            if disable_errors:
                 return
             if groups_only and not check.is_group:
                 await check.respond("`I don't think this is a group.`")
