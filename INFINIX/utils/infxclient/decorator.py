@@ -121,8 +121,6 @@ def Infinix(**args):
         del args['trigger_on_inline']
     if "groups_only" in args:
         del args['groups_only']
-    if "disable_errors" in args:
-        del args['disable_errors']
     if "trigger_on_fwd" in args:
         del args['trigger_on_fwd']
     def decorator(func):
@@ -145,55 +143,53 @@ def Infinix(**args):
             except BaseException as e:
                 infxlog.exception(e)
                 if not disable_errors:
-                    from .wrapper import infxgvar
-                    date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-
-                    text = "**Sorry, I encountered a error!**\n"
-                    link = "[https://t.me/PikachuUserbotSupport](Pikabot Support Chat)"
-                    text += "If you wanna you can report it"
-                    text += f"- just forward this message to {link}.\n"
-                    text += "I won't log anything except the fact of error and date\n"
-
-                    ftext = "\nDisclaimer:\nThis file uploaded ONLY here, "
-                    ftext += "we logged only fact of error and date, "
-                    ftext += "we respect your privacy, "
-                    ftext += "you may not report this error if you've "
-                    ftext += "any confidential data here, no one will see your data "
-                    ftext += "if you choose not to do so.\n\n"
-                    ftext += "--------BEGIN PIKABOT TRACEBACK LOG--------"
-                    ftext += "\nDate: " + date
-                    ftext += "\nGroup ID: " + str(check.chat_id)
-                    ftext += "\nSender ID: " + str(check.sender_id)
-                    ftext += "\nClient Name: " + str(await infxgvar(check)) 
-                    ftext += "\n\nEvent Trigger:\n"
-                    ftext += str(check.text)
-                    ftext += "\n\nTraceback info:\n"
-                    ftext += str(format_exc())
-                    ftext += "\n\nError text:\n"
-                    ftext += str(sys.exc_info()[1])
-                    ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
-                    command = "git log --pretty=format:\"%an: %s\" -5"
-                    ftext += "\n\n\nLast 5 commits:\n"
-                    process = await asyncio.create_subprocess_shell(command,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)
-                    stdout, stderr = await process.communicate()
-                    result = str(stdout.decode().strip()) + str(stderr.decode().strip()) 
-                    ftext += result
-                    file = open("error.log", "w+")
-                    file.write(ftext)
-                    file.close()
-                    if pdb.Botlog_chat:
-                        await check.client.send_file(
-                            send_to,
-                            "error.log",
-                            caption=text,
-                        )
-                    else:
-                        await check.client.send_file(
-                            check.chat_id,
-                            "error.log",
-                            caption=text,
-                        )
-                    remove("error.log")
+                from .wrapper import infxgvar
+                date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+                text = "**Sorry, I encountered a error!**\n"
+                link = "[https://t.me/PikachuUserbotSupport](Pikabot Support Chat)"
+                text += "If you wanna you can report it"
+                text += f"- just forward this message to {link}.\n"
+                text += "I won't log anything except the fact of error and date\n"
+                ftext = "\nDisclaimer:\nThis file uploaded ONLY here, "
+                ftext += "we logged only fact of error and date, "
+                ftext += "we respect your privacy, "
+                ftext += "you may not report this error if you've "
+                ftext += "any confidential data here, no one will see your data "
+                ftext += "if you choose not to do so.\n\n"
+                ftext += "--------BEGIN PIKABOT TRACEBACK LOG--------"
+                ftext += "\nDate: " + date
+                ftext += "\nGroup ID: " + str(check.chat_id)
+                ftext += "\nSender ID: " + str(check.sender_id)
+                ftext += "\nClient Name: " + str(await infxgvar(check)) 
+                ftext += "\n\nEvent Trigger:\n"
+                ftext += str(check.text)
+                ftext += "\n\nTraceback info:\n"
+                ftext += str(format_exc())
+                ftext += "\n\nError text:\n"
+                ftext += str(sys.exc_info()[1])
+                ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                command = "git log --pretty=format:\"%an: %s\" -5"
+                ftext += "\n\n\nLast 5 commits:\n"
+                process = await asyncio.create_subprocess_shell(command,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)
+                stdout, stderr = await process.communicate()
+                result = str(stdout.decode().strip()) + str(stderr.decode().strip()) 
+                ftext += result
+                file = open("error.log", "w+")
+                file.write(ftext)
+                file.close()
+                if pdb.Botlog_chat:
+                    await check.client.send_file(
+                        send_to,
+                        "error.log",
+                        caption=text,
+                    )
+                else:
+                    await check.client.send_file(
+                        check.chat_id,
+                        "error.log",
+                        caption=text,
+                    )
+                remove("error.log")
         if bot:
             if not infx and not sudo:
                 bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
