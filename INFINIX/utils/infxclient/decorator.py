@@ -190,29 +190,16 @@ def Infinix(**args):
                     )
                 remove("error.log")
         if not tbot and not sudo:
-            if bot:
-                bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
-            if bot2:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args, pattern=bpt))
-            if bot3
-                bot3.add_event_handler(wrapper, events.NewMessage(**args, pattern=gpt))
-            if bot4: 
-                bot4.add_event_handler(wrapper, events.NewMessage(**args, pattern=dpt))
-
-        elif sudo:
-             if bot:
-                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
-             if bot2:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
-             if bot3:
-                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
-             if bot4:
-                bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=dspt, from_users=Dsudo))
-        elif tgbot:
-            if tbot:
-                tgbot.add_event_handler(wrapper, events.NewMessage(**args))
-        else: 
-            pass 
+            if bot: bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
+            if bot2: bot2.add_event_handler(wrapper, events.NewMessage(**args, pattern=bpt))
+            if bot3: bot3.add_event_handler(wrapper, events.NewMessage(**args, pattern=gpt))
+            if bot4: bot4.add_event_handler(wrapper, events.NewMessage(**args, pattern=dpt))
+        if sudo:
+             if bot: bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
+             if bot2: bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
+             if bot3: bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
+             if bot4: bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=dspt, from_users=Dsudo))
+        if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(wrapper)
         except Exception:
