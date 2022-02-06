@@ -142,7 +142,6 @@ def Infinix(**args):
                 pass
             except BaseException as e:
                 infxlog.exception(e)
-                if not disable_errors:
                 from .wrapper import infxgvar
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 text = "**Sorry, I encountered a error!**\n"
