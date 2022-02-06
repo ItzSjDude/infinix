@@ -16,7 +16,7 @@ from pathlib import Path
 import re, time, math, friendly
 import sys
 infxlog = getLogger("Plugin Error?")
-CMD_LIST = {};PikaAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
+CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
 
 acmd=bcmd=gcmd=dcmd="\."
 sacmd=sbcmd=sgcmd=sdcmd="\!" 
