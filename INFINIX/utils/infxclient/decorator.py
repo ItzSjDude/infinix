@@ -59,7 +59,7 @@ def Infinix(**args):
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
-    infx = args.get("infx", False)
+    tbot = args.get("tbot", False)
     sudo = args.get("sudo", False)
     lol=True
     if infx: 
@@ -70,7 +70,7 @@ def Infinix(**args):
     else: 
         args["outgoing"] = True
     if pattern is not None:
-        if infx:
+        if tbot:
             if pattern.startswith("^/"):
                 infxtg = pattern.replace("^/", "\\/")
                 args["pattern"] = re.compile(infxtg)
@@ -189,29 +189,30 @@ def Infinix(**args):
                         caption=text,
                     )
                 remove("error.log")
-        if bot:
-            if not infx and not sudo:
+        if not tbot and not sudo:
+            if bot:
                 bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
-            if sudo:
-                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
-        if bot2:
-            if not infx and not sudo:
+            if bot2:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args, pattern=bpt))
-            if sudo:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
-        if bot3:
-            if not infx and not sudo:
+            if bot3
                 bot3.add_event_handler(wrapper, events.NewMessage(**args, pattern=gpt))
-            if sudo:
-                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
-        if bot4:
-            if not infx and not sudo:
+            if bot4: 
                 bot4.add_event_handler(wrapper, events.NewMessage(**args, pattern=dpt))
-            if sudo:
+
+        elif sudo:
+             if bot:
+                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
+             if bot2:
+                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
+             if bot3:
+                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
+             if bot4:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=dspt, from_users=Dsudo))
-        if tgbot:
-            if infx:
+        elif tgbot:
+            if tbot:
                 tgbot.add_event_handler(wrapper, events.NewMessage(**args))
+        else: 
+            pass 
         try:
             LOAD_PLUG[file_test].append(wrapper)
         except Exception:
