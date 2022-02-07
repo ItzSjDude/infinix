@@ -64,9 +64,9 @@ async def StartInfinix():
             if bot4: i=i+1
             msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {xi} Connected ✅"
             await infx_msg(_loginfx, msg.format(xi=i)
+
         def __load_plugs__():
             from ..loader import infx_plugins, infx_assistant
-            msg+= "Loading Plugins" + "\n"
             if tgbot: 
                 for name in files:
                     with open(name) as f:
@@ -79,8 +79,9 @@ async def StartInfinix():
                         infx_assistant(shortname.replace(".py", ""))
 
         try: 
+            msg += "Loading Plugins" + "\n"
             __load_plugs__()
-            msg+= "**Status**: Successfully Loaded"
+            msg += "**Status**: Successfully Loaded"
             await infx_msg(_loginfx, msg)
         except Exception as e:
             infxlog.exception(e)
