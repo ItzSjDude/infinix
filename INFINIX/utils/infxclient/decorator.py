@@ -62,9 +62,9 @@ def Infinix(**args):
     tbot = args.get("tbot", False)
     sudo = args.get("sudo", False)
     lol=True
-    if infx: 
+    if tbot: 
         args["incoming"] = True
-        del args["infx"]  
+        del args["tbot"]  
     if sudo:
         del args["sudo"]
     else: 
