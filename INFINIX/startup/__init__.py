@@ -29,7 +29,7 @@ async def StartInfinix():
        
         _const = {}; _logstr_ = "__{}__: connected 🔥"; _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(_const, pdb.Bf_uname); import glob; path = './plugins/*.py'; _path = './infxbot/Assistant/plugins/*.py'; files = glob.glob(path); _files = glob.glob(_path)
         await tgbot.start(); tgbot.me = await tgbot.get_me(); tgbot.infxAsst = {}; tgbot.uid = tutils.get_peer_id(tgbot.me); infxlog.info(_logstr_.format("tgbot")); msg = "✘Infinix Booting Process Started ✘"+"\n\n"; _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
-        msg+="✗Checking Tgbot Connectivity✗"+"\n\n"+"**Status**: Connected ✅"; await infx_msg(_loginfx, msg); await asyncio.sleep(2)
+        msg+="✗Checking Tgbot Connectivity✗"+"\n\n"+"**Status**: Connected ✅\n"; await infx_msg(_loginfx, msg); await asyncio.sleep(2)
         if pdb.Alpha:
             try:
                 await bot.start(); bot.me = await bot.get_me(); bot.infx_cmd = {}; bot.uid = tutils.get_peer_id(bot.me); infxlog.info(_logstr_.format("mainclient"))
@@ -54,7 +54,7 @@ async def StartInfinix():
             except:
                 infxlog.info(_logstr2_.format("multiclient3")); await infx_login("delta")
         if bot and (not bot2,bot3,bot4):
-            msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅"
+            msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
             await infx_msg(_loginfx, msg)
         else: 
             i=0
@@ -62,7 +62,7 @@ async def StartInfinix():
             if bot2: i=i+1
             if bot3: i=i+1
             if bot4: i=i+1
-            msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {xi} Connected ✅"
+            msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {xi} Connected ✅\n\n"
             await infx_msg(_loginfx, msg.format(xi=i))
 
         def __load_plugs__():
@@ -81,7 +81,7 @@ async def StartInfinix():
         try: 
             msg += "Loading Plugins" + "\n"
             __load_plugs__()
-            msg += "**Status**: Successfully Loaded"
+            msg += "**Status**: Successfully Loaded\n\n"
             await infx_msg(_loginfx, msg)
         except Exception as e:
             infxlog.exception(e)
