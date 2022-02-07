@@ -63,7 +63,7 @@ async def StartInfinix():
             if bot3: i=i+1
             if bot4: i=i+1
             msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {xi} Connected ✅"
-            await infx_msg(_loginfx, msg.format(xi=i)
+            await infx_msg(_loginfx, msg.format(xi=i))
 
         def __load_plugs__():
             from ..loader import infx_plugins, infx_assistant
