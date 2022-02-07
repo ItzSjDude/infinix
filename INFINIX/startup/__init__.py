@@ -87,7 +87,7 @@ async def StartInfinix():
             infxlog.exception(e)
             msg += "Error While Loading\n\n"+ str(e) + "\n\n"; await infx_msg(_loginfx, msg)
 
-        msg += "**✘Infinix Boot Process Finished✘**"+"\n\n; await infx_msg(_loginfx, msg)
+        msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; await infx_msg(_loginfx, msg)
         msg += "__-Developed By ItzSjDude With ♥️__": await infx_msg(_loginfx, msg)
        
 
