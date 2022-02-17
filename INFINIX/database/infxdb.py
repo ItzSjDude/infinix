@@ -553,6 +553,7 @@ def get_locks(infx, chat_id):
         SESSION.close()
 
 class pdb(object):
+    Asudo=Bsudo=Gsudo=Dsudo=Osudo=None
     Api_id = _get("Api_id")
     Api_hash = _get("Api_hash")
     Bf_uname = _get("Bot_username")
@@ -565,23 +566,10 @@ class pdb(object):
     Botlog_chat = int(_get("Botlog_chat"))
     Ytapi = pget("omega", "ytapi")
     Gdtoken = pget("omega", "gdtoken")
-    if pget("alpha", "sudo"):  
-       Asudo = pget("alpha", "sudo")
-    else: 
-       Asudo = None
-    if pget("beta", "sudo"):
-       Bsudo = pget("beta", "sudo")
-    else: 
-       Bsudo = None
-    if pget("gaama", "sudo"):
-       Gsudo = pget("gaama", "sudo")
-    else: 
-       Gsudo = None
-    if pget("delta", "sudo"):
-       Dsudo = pget("delta", "sudo")
-    else: 
-       Dsudo= None
-    if pget("omega", "sudo"):
-       Osudo = pget("omega", "sudo")
-    else: 
-       Osudo = None
+    if pget("alpha", "sudo"): Asudo = pget("alpha", "sudo")
+    if pget("beta", "sudo"): Bsudo = pget("beta", "sudo")
+    if pget("gaama", "sudo"): Gsudo = pget("gaama", "sudo")
+    if pget("delta", "sudo"): Dsudo = pget("delta", "sudo")
+    if pget("omega", "sudo"): Osudo = pget("omega", "sudo")
+    Dldir="./User_Drive"
+    
