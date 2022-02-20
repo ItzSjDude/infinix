@@ -13,8 +13,6 @@ import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
 import time
 infxlog = getLogger("Startup")
-infclts=[]
-
 async def StartInfinix(): 
     from ..database import pdb
 
