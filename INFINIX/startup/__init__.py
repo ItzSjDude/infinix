@@ -105,4 +105,4 @@ async def StartInfinix():
         if bot4:
             await bot4.run_until_disconnected()
 
-__all__=["StartInfinix","infclts"]
+__all__=["StartInfinix"]
