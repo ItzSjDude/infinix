@@ -8,14 +8,14 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "Config.TMP_DOWNLOAD_DIRECTORY"
-          replace: "pdb.Dldir"
+          find: "Gsudo"
+          replace: "Csudo"
           include: "INFINIX/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
 
-          commit_message: 'Auto Fixes'
+          commit_message: 'InFiNiX: Auto Fixes💫'
           commit_options: '--no-verify'
           repository: .
           commit_user_name: ItzSjDude
