@@ -13,7 +13,7 @@ import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
 import time
 infxlog = getLogger("Startup")
-
+infclts=[]
 
 async def StartInfinix(): 
     from ..database import pdb
@@ -107,4 +107,4 @@ async def StartInfinix():
         if bot4:
             await bot4.run_until_disconnected()
 
-__all__=["StartInfinix"]
+__all__=["StartInfinix","infclts"]
