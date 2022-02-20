@@ -20,7 +20,7 @@ CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG =
 
 acmd=bcmd=gcmd=dcmd="\."
 sacmd=sbcmd=sgcmd=sdcmd="\!" 
-Asudo=Bsudo=Gsudo=Dsudo=int(1277919761)
+Asudo=Bsudo=Csudo=Dsudo=int(1277919761)
 
 cmd1=pget("alpha", "cmdhandler")
 cmd2=pget("beta", "cmdhandler")
@@ -43,7 +43,7 @@ if scmd4: sdcmd=f"\{scmd4}"
 
 if pdb.Asudo is not None: Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
 if pdb.Bsudo is not None: Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
-if pdb.Gsudo is not None: Gsudo=list(set(int(x) for x in (pdb.Gsudo).split(" ")))
+if pdb.Csudo is not None: Csudo=list(set(int(x) for x in (pdb.Csudo).split(" ")))
 if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" ")))
 smx=[Asudo,Bsudo,Csudo,Dsudo]
 def Infinix(**args):
