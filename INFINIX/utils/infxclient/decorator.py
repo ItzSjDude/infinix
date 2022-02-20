@@ -9,8 +9,7 @@ from asyncio import create_subprocess_shell as asyncsubshell, subprocess as asyn
 from os import remove
 from traceback import format_exc
 from logging import getLogger
-from ...core import * 
-from ...startup import infclts
+from ...core import *
 from ...database import *
 from ...infxcl import *
 from pathlib import Path
@@ -18,7 +17,7 @@ import re, time, math, friendly
 import sys
 infxlog = getLogger("Plugin Error?")
 CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
-
+infclts=[]
 acmd=bcmd=gcmd=dcmd="\."
 sacmd=sbcmd=sgcmd=sdcmd="\!" 
 Asudo=Bsudo=Csudo=Dsudo=int(1277919761)
@@ -319,4 +318,4 @@ class Loader():
         if bot4:
           bot4.add_event_handler(func, events.NewMessage(**args))
         
-__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
+__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress','infclts']
