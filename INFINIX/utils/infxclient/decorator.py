@@ -45,7 +45,7 @@ if pdb.Asudo is not None: Asudo=list(set(int(x) for x in (pdb.Asudo).split(" "))
 if pdb.Bsudo is not None: Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
 if pdb.Gsudo is not None: Gsudo=list(set(int(x) for x in (pdb.Gsudo).split(" ")))
 if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" ")))
-
+smx=[Asudo,Bsudo,Csudo,Dsudo]
 def Infinix(**args):
     from inspect import stack
 
@@ -62,6 +62,7 @@ def Infinix(**args):
     tbot = args.get("tbot", False)
     sudo = args.get("sudo", False)
     lol=True
+    cmx=[];dmx=[]
     if tbot: 
         args["incoming"] = True
         del args["tbot"]  
@@ -83,8 +84,9 @@ def Infinix(**args):
                 InfAsst[file_test].append(infxtg)
             except BaseException:
                 InfAsst.update({file_test: [infxtg]})
-        else: 
-            dpt=gpt=bpt=apt= None;dspt=gspt=bspt=aspt= None 
+        else:
+             
+            dpt=cpt=bpt=apt= None;dspt=cspt=bspt=aspt= None 
             if pattern.startswith("\\#"):
                 del args["pattern"]
                 dpt=gpt=bpt=apt=re.compile(pattern) 
@@ -94,29 +96,45 @@ def Infinix(**args):
                 if bot: 
                     apt = re.compile(acmd + infcmd)
                     aspt = re.compile(sacmd + infcmd)
+                    cmx.append(aspt)
+                    dmx.append(apt)
                 if bot2:
                     bpt = re.compile(bcmd + infcmd) 
                     bspt = re.compile(sbcmd + infcmd)
+                    cmx.append(bspt)
+                    dmx.append(bpt)
                 if bot3:
-                    gpt = re.compile(gcmd + infcmd) 
-                    gspt = re.compile(sgcmd + infcmd)
+                    cpt = re.compile(ccmd + infcmd) 
+                    cspt = re.compile(sccmd + infcmd)
+                    cmx.append(cspt)
+                    dmx.append(cpt)
                 if bot4:
                     dpt = re.compile(dcmd + infcmd) 
                     dspt = re.compile(sdcmd + infcmd) 
+                    cmx.append(dspt)
+                    dmx.append(dpt)
             else:
                 del args["pattern"]
                 if bot: 
                     apt = re.compile(acmd + pattern)
                     aspt = re.compile(sacmd + pattern)
+                    cmx.append(aspt)
+                    dmx.append(apt)
                 if bot2:
                     bpt = re.compile(bcmd + pattern) 
                     bspt = re.compile(sbcmd + pattern)
+                    cmx.append(bspt)
+                    dmx.append(bpt)
                 if bot3:
-                    gpt = re.compile(gcmd + pattern) 
-                    gspt = re.compile(sgcmd + pattern)
+                    cpt = re.compile(ccmd + pattern) 
+                    cspt = re.compile(sccmd + pattern)
+                    cmx.append(cspt)
+                    dmx.append(cpt)
                 if bot4:
                     dpt = re.compile(dcmd + pattern) 
                     dspt = re.compile(sdcmd + pattern) 
+                    cmx.append(dspt)
+                    dmx.append(dpt)
     if "trigger_on_inline" in args:
         del args['trigger_on_inline']
     if "groups_only" in args:
@@ -190,15 +208,13 @@ def Infinix(**args):
                     )
                 remove("error.log")
         if not tbot and not sudo:
-            if bot: bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
-            if bot2: bot2.add_event_handler(wrapper, events.NewMessage(**args, pattern=bpt))
-            if bot3: bot3.add_event_handler(wrapper, events.NewMessage(**args, pattern=gpt))
-            if bot4: bot4.add_event_handler(wrapper, events.NewMessage(**args, pattern=dpt))
+            c=zip(infclts,dmx)
+            for i,j in c:
+                i.add_event_handler(wrapper, events.NewMessage(**args, pattern=j))
         if sudo:
-             if bot: bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
-             if bot2: bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
-             if bot3: bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
-             if bot4: bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=dspt, from_users=Dsudo))
+            c=zip(infclts,cmx,smx)
+            for i,j,k in c:
+                i.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=j, from_users=k))
         if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(wrapper)
