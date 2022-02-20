@@ -211,13 +211,10 @@ def Infinix(**args):
             c=zip(infclts,dmx)
             for i,j in c:
                 i.add_event_handler(wrapper, events.NewMessage(**args, pattern=j))
-            dmx.clear()
         if sudo:
             c=zip(infclts,cmx,smx)
             for i,j,k in c:
-                i.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=j, from_users=k))
-            cmx.clear()
-            smx.clear()    
+                i.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=j, from_users=k))  
         if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(wrapper)
