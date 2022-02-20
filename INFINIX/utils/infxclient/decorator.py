@@ -18,8 +18,8 @@ import sys
 infxlog = getLogger("Plugin Error?")
 CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
 infclts=[]
-acmd=bcmd=gcmd=dcmd="\."
-sacmd=sbcmd=sgcmd=sdcmd="\!" 
+acmd=bcmd=ccmd=dcmd="\."
+sacmd=sbcmd=cgcmd=sdcmd="\!" 
 Asudo=Bsudo=Csudo=Dsudo=int(1277919761)
 
 cmd1=pget("alpha", "cmdhandler")
@@ -33,12 +33,12 @@ scmd4=pget("delta", "sudocmd")
 
 if cmd1: acmd=f"\{cmd1}"
 if cmd2: bcmd=f"\{cmd2}"
-if cmd3: gcmd=f"\{cmd3}"
+if cmd3: ccmd=f"\{cmd3}"
 if cmd4: dcmd=f"\{cmd4}"
  
 if scmd1: sacmd=f"\{scmd1}"
 if scmd2: sbcmd=f"\{cmd2}"
-if scmd3: sgcmd=f"\{scmd3}"
+if scmd3: sccmd=f"\{scmd3}"
 if scmd4: sdcmd=f"\{scmd4}"
 
 if pdb.Asudo is not None: Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
