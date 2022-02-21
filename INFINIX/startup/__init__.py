@@ -1,5 +1,5 @@
 from ..core import *
-from ..utils import infx_msg,infclts
+from ..utils import infx_msg
 from .login import infx_login
 from ..infxcl import *
 from .logger import *
@@ -13,6 +13,18 @@ import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
 import time
 infxlog = getLogger("Startup")
+
+def add_active_clts():
+    from ..utils import infclts
+    if bot:
+        infclts.append(bot)
+    if bot2:
+        infclts.append(bot2)
+    if bot3:
+        infclts.append(bot3)
+    if bot4:
+        infclts.append(bot4)
+
 async def StartInfinix(): 
     from ..database import pdb
 
@@ -48,15 +60,16 @@ async def StartInfinix():
                 await bot4.start(); bot4.me = await bot4.get_me(); bot4.uid = tutils.get_peer_id(bot4.me); 
             except:
                 infxlog.info(_logstr2_.format("multiclient3")); await infx_login("delta")
+        add_active_clts()
         if bot and (not bot2,bot3,bot4):
             msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
             await infx_msg(_loginfx, msg)
         else: 
             i=0
-            if bot: infclts.append(bot);i=i+1
-            if bot2: infclts.append(bot2);i=i+1
-            if bot3: infclts.append(bot3);i=i+1
-            if bot4: infclts.append(bot4);i=i+1
+            if bot: i=i+1
+            if bot2: i=i+1
+            if bot3: i=i+1
+            if bot4: i=i+1
             msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {xi} Connected ✅\n\n"
             await infx_msg(_loginfx, msg.format(xi=i))
 
