@@ -53,7 +53,7 @@ async def StartInfinix():
             await infx_msg(_loginfx, msg)
         else: 
             i=0
-            if bot: infclts.append(bot1);i=i+1
+            if bot: infclts.append(bot);i=i+1
             if bot2: infclts.append(bot2);i=i+1
             if bot3: infclts.append(bot3);i=i+1
             if bot4: infclts.append(bot4);i=i+1
