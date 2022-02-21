@@ -208,7 +208,10 @@ def Infinix(**args):
                     )
                 remove("error.log")
         if not tbot and not sudo:
-            bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
+            d=zip(infclts,dmx)
+            for i,j in d:
+                i.add_event_handler(wrapper, events.NewMessage(**args, pattern=j))
+            dmx.clear()
         if sudo:
             c=zip(infclts,cmx,smx)
             for i,j,k in c:
