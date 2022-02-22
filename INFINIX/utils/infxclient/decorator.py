@@ -58,8 +58,6 @@ def _compile(hndlr,ptrn):
     a=re.compile(hndlr + ptrn)
   return a
 
-
-print(_compile("\!", "^.infinix"))
 smx=[Asudo,Bsudo,Csudo,Dsudo]
 
 def Infinix(**args):
