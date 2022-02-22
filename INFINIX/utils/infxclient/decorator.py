@@ -60,12 +60,11 @@ def _compile(hndlr,ptrn):
 
 smx=[Asudo,Bsudo,Csudo,Dsudo]
 
-def Infinix(**args):
+def Infinix(**args, pattern=None):
     from inspect import stack
     _plug = "\!";cmx=[];dmx=[]
     args["func"] = lambda e: e.via_bot_id is None
     file_test = Path((stack()[1]).filename).stem.replace(".py", "")
-    pattern = args.get("pattern", None)
     allow_sudo = args.get("allow_sudo", False)
     args.get('disable_edited', True)
     groups_only = args.get('groups_only', False)
