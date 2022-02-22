@@ -45,6 +45,21 @@ if pdb.Asudo is not None: Asudo=list(set(int(x) for x in (pdb.Asudo).split(" "))
 if pdb.Bsudo is not None: Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
 if pdb.Csudo is not None: Csudo=list(set(int(x) for x in (pdb.Csudo).split(" ")))
 if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" ")))
+
+def _compile(hndlr,ptrn):
+  a=None
+  if ptrn.startswith("^/"):
+     a= re.compile(ptrn.replace("^/", "\\/"))
+  elif ptrn.startswith("\\#"):
+     a= re.compile(ptrn)
+  elif ptrn.startswith("^."):
+     a=re.compile(hndlr + ptrn.replace("^.", ""))
+  else:
+    a=re.compile(hndlr + ptrn)
+  return a
+
+
+print(_compile("\!", "^.infinix"))
 smx=[Asudo,Bsudo,Csudo,Dsudo]
 
 def Infinix(**args):
