@@ -58,13 +58,14 @@ def Infinix(**args):
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
+    sudo = args.get("sudo", False)
     tbot = args.get("tbot", False)
 
     if "trigger_on_inline" in args: del args['trigger_on_inline']
     if "groups_only" in args: del args['groups_only']
     if "trigger_on_fwd" in args: del args['trigger_on_fwd']
     if tbot: args["incoming"] = True; del args["tbot"]  
-    if sudo: del args["sudo"]
+    if sudo: del args["sudo"] 
     else: args["outgoing"] = True
     if pattern: 
         if bot: c1=_compile(acmd, pattern); sc1=_compile(sacmd, pattern); cmx.append(c1); dmx.append(sc1);
