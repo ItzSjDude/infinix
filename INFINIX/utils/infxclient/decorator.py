@@ -60,7 +60,7 @@ def _compile(hndlr,ptrn):
 
 smx=[Asudo,Bsudo,Csudo,Dsudo]
 
-def Infinix(**args, pattern=None):
+def Infinix(**args):
     from inspect import stack
     _plug = "\!";cmx=[];dmx=[]
     args["func"] = lambda e: e.via_bot_id is None
