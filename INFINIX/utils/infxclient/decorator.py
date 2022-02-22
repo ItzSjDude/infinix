@@ -49,7 +49,7 @@ if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" "))
 def _compile(hndlr,ptrn):
   a=None
   if ptrn.startswith("^/"):
-     a= re.compile(ptrn.replace("^/", "\\/"))
+     a= re.compile(hndlr + ptrn.replace("^/", "\\/"),)
   elif ptrn.startswith("\\#"):
      a= re.compile(ptrn)
   elif ptrn.startswith("^."):
