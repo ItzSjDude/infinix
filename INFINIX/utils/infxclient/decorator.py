@@ -66,6 +66,7 @@ def Infinix(**args, pattern=None):
     args["func"] = lambda e: e.via_bot_id is None
     file_test = Path((stack()[1]).filename).stem.replace(".py", "")
     allow_sudo = args.get("allow_sudo", False)
+    pattern = args.get("pattern", False)
     args.get('disable_edited', True)
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
@@ -80,6 +81,7 @@ def Infinix(**args, pattern=None):
     if sudo: del args["sudo"] 
     else: args["outgoing"] = True
     if pattern: 
+        del args["pattern"]
         if bot: c1=_compile(acmd, pattern); sc1=_compile(sacmd, pattern); cmx.append(c1); dmx.append(sc1);
         if bot2: c2=_compile(bcmd, pattern); sc2=_compile(sbcmd, pattern); cmx.append(c2); dmx.append(sc2);
         if bot3: c3=_compile(ccmd, pattern); sc3=_compile(sccmd, pattern); cmx.append(c3); dmx.append(sc3);
