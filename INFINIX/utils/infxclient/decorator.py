@@ -46,11 +46,10 @@ if pdb.Bsudo is not None: Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" "))
 if pdb.Csudo is not None: Csudo=list(set(int(x) for x in (pdb.Csudo).split(" ")))
 if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" ")))
 smx=[Asudo,Bsudo,Csudo,Dsudo]
+
 def Infinix(**args):
     from inspect import stack
-
-
-    _plug = "\!"
+    _plug = "\!";cmx=[];dmx=[]
     args["func"] = lambda e: e.via_bot_id is None
     file_test = Path((stack()[1]).filename).stem.replace(".py", "")
     pattern = args.get("pattern", None)
@@ -60,95 +59,23 @@ def Infinix(**args):
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
     tbot = args.get("tbot", False)
-    sudo = args.get("sudo", False)
-    lol=True
-    cmx=[];dmx=[]
-    if tbot: 
-        args["incoming"] = True
-        del args["tbot"]  
-    if sudo:
-        del args["sudo"]
-    else: 
-        args["outgoing"] = True
-    if pattern is not None:
-        if tbot:
-            if pattern.startswith("^/"):
-                infxtg = pattern.replace("^/", "\\/")
-                args["pattern"] = re.compile(infxtg)
-            elif pattern.startswith("\\#"):
-                args["pattern"] = re.compile(pattern)
-            else:
-                args["pattern"] = re.compile(_plug + pattern)
-                infxtg = _plug + pattern
-            try:
-                InfAsst[file_test].append(infxtg)
-            except BaseException:
-                InfAsst.update({file_test: [infxtg]})
-        else:
-             
-            dpt=cpt=bpt=apt= None;dspt=cspt=bspt=aspt= None 
-            if pattern.startswith("\\#"):
-                del args["pattern"]
-                dpt=gpt=bpt=apt=re.compile(pattern) 
-            if pattern.startswith("^."):
-                del args["pattern"]
-                infcmd = pattern.replace("^.", "")
-                if bot: 
-                    apt = re.compile(acmd + infcmd)
-                    aspt = re.compile(sacmd + infcmd)
-                    cmx.append(aspt)
-                    dmx.append(apt)
-                if bot2:
-                    bpt = re.compile(bcmd + infcmd) 
-                    bspt = re.compile(sbcmd + infcmd)
-                    cmx.append(bspt)
-                    dmx.append(bpt)
-                if bot3:
-                    cpt = re.compile(ccmd + infcmd) 
-                    cspt = re.compile(sccmd + infcmd)
-                    cmx.append(cspt)
-                    dmx.append(cpt)
-                if bot4:
-                    dpt = re.compile(dcmd + infcmd) 
-                    dspt = re.compile(sdcmd + infcmd) 
-                    cmx.append(dspt)
-                    dmx.append(dpt)
-            else:
-                del args["pattern"]
-                if bot: 
-                    apt = re.compile(acmd + pattern)
-                    aspt = re.compile(sacmd + pattern)
-                    cmx.append(aspt)
-                    dmx.append(apt)
-                if bot2:
-                    bpt = re.compile(bcmd + pattern) 
-                    bspt = re.compile(sbcmd + pattern)
-                    cmx.append(bspt)
-                    dmx.append(bpt)
-                if bot3:
-                    cpt = re.compile(ccmd + pattern) 
-                    cspt = re.compile(sccmd + pattern)
-                    cmx.append(cspt)
-                    dmx.append(cpt)
-                if bot4:
-                    dpt = re.compile(dcmd + pattern) 
-                    dspt = re.compile(sdcmd + pattern) 
-                    cmx.append(dspt)
-                    dmx.append(dpt)
-    if "trigger_on_inline" in args:
-        del args['trigger_on_inline']
-    if "groups_only" in args:
-        del args['groups_only']
-    if "trigger_on_fwd" in args:
-        del args['trigger_on_fwd']
+
+    if "trigger_on_inline" in args: del args['trigger_on_inline']
+    if "groups_only" in args: del args['groups_only']
+    if "trigger_on_fwd" in args: del args['trigger_on_fwd']
+    if tbot: args["incoming"] = True; del args["tbot"]  
+    if sudo: del args["sudo"]
+    else: args["outgoing"] = True
+    if pattern: 
+        if bot: c1=_compile(acmd, pattern); sc1=_compile(sacmd, pattern); cmx.append(c1); dmx.append(sc1);
+        if bot2: c2=_compile(bcmd, pattern); sc2=_compile(sbcmd, pattern); cmx.append(c2); dmx.append(sc2);
+        if bot3: c3=_compile(ccmd, pattern); sc3=_compile(sccmd, pattern); cmx.append(c3); dmx.append(sc3);
+        if bot4: c4=_compile(dcmd, pattern); sc4=_compile(sdcmd, pattern); cmx.append(c4); dmx.append(sc4);
     def decorator(func):
         async def wrapper(check):
-            if pdb.Botlog_chat:
-                send_to = pdb.Botlog_chat
-            if not trigger_on_fwd and check.fwd_from:
-                return
-            if check.via_bot_id and not trigger_on_inline:
-                return
+            if pdb.Botlog_chat: send_to = pdb.Botlog_chat
+            if not trigger_on_fwd and check.fwd_from: return
+            if check.via_bot_id and not trigger_on_inline: return
             if groups_only and not check.is_group:
                 await check.respond("`I don't think this is a group.`")
                 return
@@ -163,12 +90,10 @@ def Infinix(**args):
                 from .wrapper import infxgvar
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 text = "**Sorry, I encountered a error!**\n"
-                link = "[https://t.me/PikachuUserbotSupport](Pikabot Support Chat)"
                 text += "If you wanna you can report it"
-                text += f"- just forward this message to {link}.\n"
                 text += "I won't log anything except the fact of error and date\n"
                 ftext = "\nDisclaimer:\nThis file uploaded ONLY here, "
-                ftext += "we logged only fact of error and date, "
+                ftext += "we logged only fact of error aand date, "
                 ftext += "we respect your privacy, "
                 ftext += "you may not report this error if you've "
                 ftext += "any confidential data here, no one will see your data "
@@ -203,20 +128,22 @@ def Infinix(**args):
                 else:
                     await check.client.send_file(
                         check.chat_id,
-                        "error.log",
+                        "error.txt",
                         caption=text,
                     )
                 remove("error.log")
+
+
         if not tbot and not sudo:
-            d=zip(infclts,dmx)
+            d=zip(infclts,cmx)
             for i,j in d:
                 i.add_event_handler(wrapper, events.NewMessage(**args, pattern=j))
-            dmx.clear()
+            cmx.clear()
         if sudo:
-            c=zip(infclts,cmx,smx)
+            c=zip(infclts,dmx,smx)
             for i,j,k in c:
                 i.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
-            cmx.clear() 
+            dmx.clear() 
             smx.clear()
         if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args))
         try:
