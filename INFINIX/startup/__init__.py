@@ -15,101 +15,80 @@ import time
 infxlog = getLogger("Startup")
 infson=[]
 def add_active_clts():
-    if bot:
-        infclts.append(bot)
-    if bot2:
-        infclts.append(bot2)
-    if bot3:
-        infclts.append(bot3)
-    if bot4:
-        infclts.append(bot4)
+    if bot: infclts.append(bot)
+    if bot2: infclts.append(bot2)
+    if bot3: infclts.append(bot3)
+    if bot4: infclts.append(bot4)
 
-def add_session():
+def inf_sesson(name=None):
     from ..database import pdb
-    if pdb.Alpha: 
-        infson.append("alpha") 
-    if pdb.Beta: 
-        infson.append("beta") 
-    if pdb.Gaama: 
-        infson.append("gaama") 
-    if pdb.Delta: 
-        infson.append("delta") 
-
-def return_cl(name):
-    if name=="alpha": return bot
-    if name=="beta": return bot2
-    if name=="gama": return bot3
-    if name=="delta": return bot4
-   
+    if name: 
+        if name=="omega": return tgbot
+        if name=="alpha": return bot
+        if name=="beta": return bot2
+        if name=="gama": return bot3
+        if name=="delta": return bot4
+    else: 
+        if pdb.Omega: infson.append("omega")
+        if pdb.Alpha: infson.append("alpha") 
+        if pdb.Beta: infson.append("beta") 
+        if pdb.Gaama: infson.append("gaama") 
+        if pdb.Delta: infson.append("delta") 
+        
 async def StartInfinix(): 
     from ..database import pdb
-
-    if not bot:
-        infxlog.info(
-           "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.Bf_uname))
-        await infx_login("alpha")
-    else:
-       
-        _const = {}; _logstr_ = "__{}__: connected 🔥"; _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(_const, pdb.Bf_uname); import glob; path = './plugins/*.py'; _path = './infxbot/Assistant/plugins/*.py'; files = glob.glob(path); _files = glob.glob(_path)
-        await tgbot.start(); tgbot.me = await tgbot.get_me(); tgbot.infxAsst = {}; tgbot.uid = tutils.get_peer_id(tgbot.me); infxlog.info(_logstr_.format("tgbot")); msg = "✘Infinix Booting Process Started ✘"+"\n\n"; _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
-        msg+="✗Checking Tgbot Connectivity✗"+"\n"+"**Status**: Connected ✅\n\n"; await infx_msg(_loginfx, msg); await asyncio.sleep(2)
-        add_session()
-        for sname in infson:
-            a=return_cl(sname)  
-            try:
-                await a.start(); a.me = await a.get_me(); a.infx_cmd = {}; a.uid = tutils.get_peer_id(a.me); infxlog.info(_logstr_.format(sname))
-            except Exception as e:
-                infxlog.info(str(e)); infxlog.info(_logstr2_.format(sname)); await infx_login(sname)
-
-#        if pdb.Beta:
-#            try:
-#                await bot2.start(); infxlog.info(_logstr_.format("multiclient1")); bot2.me = await bot2.get_me(); bot2.uid = tutils.get_peer_id(bot2.me)
-#            except:
-#                infxlog.info(_logstr2_.format("multiclient1")); await infx_login("beta")
-#
-#        if pdb.Gaama:
-#            try:
-#                await bot3.start(); bot3.me = await bot3.get_me(); bot3.uid = tutils.get_peer_id(bot3.me); msg += _logstr_.format("multiclient2") + "\n\n"; await infx_msg(_loginfx, msg)
-#            except:
-#                await infx_login("gaama")
-#
-#        if pdb.Delta:
-#            try:
-#                await bot4.start(); bot4.me = await bot4.get_me(); bot4.uid = tutils.get_peer_id(bot4.me); 
-#           except:
-#               infxlog.info(_logstr2_.format("multiclient3")); await infx_login("delta")
-        add_active_clts()
-        if (len(infclts))==1:
-            msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
-            await infx_msg(_loginfx, msg)
-        else: 
-            msg+="Multi UserMode Detected"+"\n"+f"**Status**: {len(infclts)} Accounts Connected ✅\n\n"
-            await infx_msg(_loginfx, msg)
-
-        def __load_plugs__():
-            from ..loader import infx_plugins, infx_assistant
-            if tgbot: 
-                for name in files:
-                    with open(name) as f:
-                        path1 = Path(f.name); shortname = path1.stem
-                        infx_plugins(shortname.replace(".py", ""))
-            if pdb.Asstt: 
-                for name in _files:
-                    with open(name) as f:
-                        _asstpath = Path(f.name); shortname = _asstpath.stem
-                        infx_assistant(shortname.replace(".py", ""))
-
-        try: 
-            msg += "Loading Plugins" + "\n"
-            __load_plugs__()
-            msg += "**Status**: Successfully Loaded\n\n"
-            await infx_msg(_loginfx, msg)
+    _const = {}; _logstr_ = "__{}__: connected 🔥"; _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(_const, pdb.Bf_uname); import glob; path = './plugins/*.py'; _path = './infxbot/Assistant/plugins/*.py'; files = glob.glob(path); _files = glob.glob(_path)
+    msg = "✘Infinix Booting Process Started ✘\n\n"
+    msg+="✗Checking Tgbot Connectivity✗\n"
+    await asyncio.sleep(2)
+    msg+="**Status**: Connected ✅\n\n"
+   
+    inf_session()
+    for sname in infson:
+        client=inf_session(sname)
+        try:
+            await client.start()
+            client.me = await client.get_me()
+            client.infx_cmd = {}
+            client.uid = tutils.get_peer_id(client.me)
+            infxlog.info(_logstr_.format(sname))
         except Exception as e:
-            infxlog.exception(e)
-            msg += "Error While Loading\n\n"+ str(e) + "\n\n"; await infx_msg(_loginfx, msg)
+            infxlog.info(_logstr2_.format(sname))
+            await infx_login(sname)
+    _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
+            
+    add_active_clts()
+    if (len(infclts))==1:
+        msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
+        await infx_msg(_loginfx, msg)
+    else: 
+        msg+="Multi UserMode Detected"+"\n"+f"**Status**: {len(infclts)} Accounts Connected ✅\n\n"
+        await infx_msg(_loginfx, msg)
 
-        msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; await infx_msg(_loginfx, msg)
-        msg += "__-Developed By ItzSjDude With ♥️__"; await infx_msg(_loginfx, msg)
+    def __load_plugs__():
+        from ..loader import infx_plugins, infx_assistant
+        if tgbot: 
+            for name in files:
+                with open(name) as f:
+                    path1 = Path(f.name); shortname = path1.stem
+                    infx_plugins(shortname.replace(".py", ""))
+        if pdb.Asstt: 
+            for name in _files:
+                with open(name) as f:
+                    _asstpath = Path(f.name); shortname = _asstpath.stem
+                    infx_assistant(shortname.replace(".py", ""))
+
+    try: 
+        msg += "Loading Plugins" + "\n"
+        __load_plugs__()
+        msg += "**Status**: Successfully Loaded\n\n"
+        await infx_msg(_loginfx, msg)
+    except Exception as e:
+        infxlog.exception(e)
+        msg += "Error While Loading\n\n"+ str(e) + "\n\n"; await infx_msg(_loginfx, msg)
+
+    msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; await infx_msg(_loginfx, msg)
+    msg += "__-Developed By ItzSjDude With ♥️__"; await infx_msg(_loginfx, msg)
        
     for aifc in infclts:  
         if len(argv) not in (1, 3, 4): await aifc.disconnect()  
