@@ -1,5 +1,5 @@
 from ..core import *
-from ..utils import infx_msg
+from ..utils import infx_msg,infclts
 from .login import infx_login
 from ..infxcl import *
 from .logger import *
@@ -15,7 +15,6 @@ import time
 infxlog = getLogger("Startup")
 
 def add_active_clts():
-    from ..utils import infclts
     if bot:
         infclts.append(bot)
     if bot2:
