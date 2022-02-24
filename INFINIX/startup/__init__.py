@@ -66,7 +66,7 @@ async def StartInfinix():
             await infx_msg(_loginfx, msg)
         else: 
             msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {} Accounts Connected ✅\n\n"
-            await infx_msg(_loginfx, msg.format(len(infclts))
+            await infx_msg(_loginfx, msg.format(len(infclts)))
 
         def __load_plugs__():
             from ..loader import infx_plugins, infx_assistant
