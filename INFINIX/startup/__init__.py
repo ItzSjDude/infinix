@@ -28,7 +28,7 @@ async def StartInfinix():
         try:
             await client.start()
             client.me = await client.get_me()
-            client.infx_cmd = {}
+            client.infx_cmd = {}; infclts.append(client);
             client.uid = tutils.get_peer_id(client.me)
             infxlog.info(_logstr_.format(sname))
         except Exception as e:
@@ -36,8 +36,6 @@ async def StartInfinix():
             await infx_login(sname)
     _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
             
-    inf_session("active")
-
     if (len(infclts))==1:
         msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
         await infx_msg(_loginfx, msg)
