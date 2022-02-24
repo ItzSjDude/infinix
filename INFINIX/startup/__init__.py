@@ -30,8 +30,8 @@ def add_session():
         infson.append("alpha") 
     if pdb.Beta: 
         infson.append("beta") 
-    if pdb.Gama: 
-        infson.append("gama") 
+    if pdb.Gaama: 
+        infson.append("gaama") 
     if pdb.Delta: 
         infson.append("delta") 
 
