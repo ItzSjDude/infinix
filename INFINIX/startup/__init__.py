@@ -25,6 +25,7 @@ def add_active_clts():
         infclts.append(bot4)
 
 def add_session():
+    from ..database import pdb
     if pdb.Alpha: 
         infson.append("alpha") 
     if pdb.Beta: 
