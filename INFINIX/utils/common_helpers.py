@@ -4,12 +4,12 @@ from .infxclient import infclts
 infson=[]
   
 def inf_session(name=None):
-  if name==None: 
+  if name==active: 
     if bot: infclts.append(bot)
     if bot2: infclts.append(bot2)
     if bot3: infclts.append(bot3)
     if bot4: infclts.append(bot4)
-  elif name=="active": 
+  elif name==None: 
     if pdb.Omega: infson.append("omega")
     if pdb.Alpha: infson.append("alpha") 
     if pdb.Beta: infson.append("beta") 
