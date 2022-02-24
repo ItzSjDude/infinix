@@ -13,28 +13,7 @@ import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
 import time
 infxlog = getLogger("Startup")
-infson=[]
-def add_active_clts():
-    if bot: infclts.append(bot)
-    if bot2: infclts.append(bot2)
-    if bot3: infclts.append(bot3)
-    if bot4: infclts.append(bot4)
-
-def inf_session(name=None):
-    from ..database import pdb
-    if name: 
-        if name=="omega": return tgbot
-        if name=="alpha": return bot
-        if name=="beta": return bot2
-        if name=="gama": return bot3
-        if name=="delta": return bot4
-    else: 
-        if pdb.Omega: infson.append("omega")
-        if pdb.Alpha: infson.append("alpha") 
-        if pdb.Beta: infson.append("beta") 
-        if pdb.Gaama: infson.append("gaama") 
-        if pdb.Delta: infson.append("delta") 
-        
+    
 async def StartInfinix(): 
     from ..database import pdb
     _const = {}; _logstr_ = "__{}__: connected 🔥"; _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(_const, pdb.Bf_uname); import glob; path = './plugins/*.py'; _path = './infxbot/Assistant/plugins/*.py'; files = glob.glob(path); _files = glob.glob(_path)
