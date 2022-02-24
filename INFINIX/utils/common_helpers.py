@@ -4,7 +4,7 @@ from .infxclient import infclts
 infson=[]
   
 def inf_session(name=None):
-  if name==active: 
+  if name=="active": 
     if bot: infclts.append(bot)
     if bot2: infclts.append(bot2)
     if bot3: infclts.append(bot3)
