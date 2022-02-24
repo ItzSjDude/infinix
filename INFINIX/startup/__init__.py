@@ -52,7 +52,7 @@ async def StartInfinix():
         _const = {}; _logstr_ = "__{}__: connected 🔥"; _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(_const, pdb.Bf_uname); import glob; path = './plugins/*.py'; _path = './infxbot/Assistant/plugins/*.py'; files = glob.glob(path); _files = glob.glob(_path)
         await tgbot.start(); tgbot.me = await tgbot.get_me(); tgbot.infxAsst = {}; tgbot.uid = tutils.get_peer_id(tgbot.me); infxlog.info(_logstr_.format("tgbot")); msg = "✘Infinix Booting Process Started ✘"+"\n\n"; _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
         msg+="✗Checking Tgbot Connectivity✗"+"\n"+"**Status**: Connected ✅\n\n"; await infx_msg(_loginfx, msg); await asyncio.sleep(2)
-     
+        add_session()
         for sname in infson:
             a=return_cl(sname)  
             try:
