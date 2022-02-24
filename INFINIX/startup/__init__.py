@@ -64,8 +64,8 @@ async def StartInfinix():
             msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
             await infx_msg(_loginfx, msg)
         else: 
-            msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {ix} Accounts Connected ✅\n\n"
-            await infx_msg(_loginfx, msg.format(ix=len(infclts)))
+            msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {len(infclts)} Accounts Connected ✅\n\n"
+            await infx_msg(_loginfx, msg)
 
         def __load_plugs__():
             from ..loader import infx_plugins, infx_assistant
@@ -92,24 +92,8 @@ async def StartInfinix():
         msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; await infx_msg(_loginfx, msg)
         msg += "__-Developed By ItzSjDude With ♥️__"; await infx_msg(_loginfx, msg)
        
-
-    if len(argv) not in (1, 3, 4):
-        if bot:
-            await gpcid("#cGJvdDE").disconnect()
-        if bot2:
-            await gpcid("#cGJvdDI").disconnect()
-        if bot3:
-            await gpcid("#cGJvdDM").disconnect()
-        if bot4:
-            await gpcid("#cGJvdDQ").disconnect()
-    else:
-        if bot:
-            await bot.run_until_disconnected()
-        if bot2:
-            await bot2.run_until_disconnected()
-        if bot3:
-            await bot3.run_until_disconnected()
-        if bot4:
-            await bot4.run_until_disconnected()
+    for aifc in infclts:  
+        if len(argv) not in (1, 3, 4): await aifc.disconnect()  
+        else: await aifc.run_until_disconnected()
 
 __all__=["StartInfinix"]
