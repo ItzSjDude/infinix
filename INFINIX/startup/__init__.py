@@ -36,7 +36,8 @@ async def StartInfinix():
             await infx_login(sname)
     _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
             
-    add_active_clts()
+    inf_session("active")
+
     if (len(infclts))==1:
         msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
         await infx_msg(_loginfx, msg)
