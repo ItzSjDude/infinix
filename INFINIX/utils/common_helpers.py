@@ -22,4 +22,4 @@ def inf_session(name=None):
     if name=="gama": return bot3
     if name=="delta": return bot4 
 
-__all__=['inf_session']
+__all__=['inf_session','infson']
