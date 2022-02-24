@@ -20,7 +20,7 @@ def add_active_clts():
     if bot3: infclts.append(bot3)
     if bot4: infclts.append(bot4)
 
-def inf_sesson(name=None):
+def inf_session(name=None):
     from ..database import pdb
     if name: 
         if name=="omega": return tgbot
