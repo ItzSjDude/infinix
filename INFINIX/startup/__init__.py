@@ -61,17 +61,12 @@ async def StartInfinix():
             except:
                 infxlog.info(_logstr2_.format("multiclient3")); await infx_login("delta")
         add_active_clts()
-        if bot and (not bot2,bot3,bot4):
+        if (len(infclts))==1:
             msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
             await infx_msg(_loginfx, msg)
         else: 
-            i=0
-            if bot: i=i+1
-            if bot2: i=i+1
-            if bot3: i=i+1
-            if bot4: i=i+1
-            msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {xi} Connected ✅\n\n"
-            await infx_msg(_loginfx, msg.format(xi=i))
+            msg+=f"Multi UserMode Detected"+"\n"+"**Status**: {} Accounts Connected ✅\n\n"
+            await infx_msg(_loginfx, msg.format(len(infclts))
 
         def __load_plugs__():
             from ..loader import infx_plugins, infx_assistant
