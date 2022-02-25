@@ -23,10 +23,10 @@ async def StartInfinix():
     msg+="**Status**: Connected ✅\n\n"
    
     inf_session()
+    if len(infson)==1:
+           infson.append("alpha")
     for sname in infson:
         client=inf_session(sname)
-        if len(infson)==0:
-           infson.append("alpha")  
         try:
             await client.start()
             client.me = await client.get_me()
