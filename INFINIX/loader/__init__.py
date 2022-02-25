@@ -56,37 +56,16 @@ def remove_plugin(shortname):
     try:
         try:
             for i in LOAD_PLUG[shortname]:
-                if bot is not None:
-                    bot.remove_event_handler(i)
-                if bot2 is not None:
-                    bot2.remove_event_handler(i)
-                if bot3 is not None:
-                    bot3.remove_event_handler(i)
-                if bot4 is not None:
-                    bot4.remove_event_handler(i)
-            del LOAD_PLUG[shortname]
+                for j in infclts: 
+                    j.remove_event_handler(i)
+             del LOAD_PLUG[shortname]
 
         except BaseException:
             name = f"plugins.{shortname}"
-            if bot is not None:
-                for i in reversed(range(len(bot._event_builders))):
-                    ev, cb = bot._event_builders[i],
+            for j in infclts: 
+                for i in reversed(range(len(j._event_builders))):
+                    ev, cb = j._event_builders[i],
                     if cb.__module__ == name:
-                        del bot._event_builders[i]
-            if bot2 is not None:
-                for i in reversed(range(len(bot2._event_builders))):
-                    ev, cx = bot2._event_builders[i],
-                    if cx.__module__ == name:
-                        del bot2._event_builders[i]
-            if bot3 is not None:
-                for i in reversed(range(len(bot3._event_builders))):
-                    ev, cy = bot3._event_builders[i],
-                    if cy.__module__ == name:
-                        del bot3._event_builders[i]
-            if bot4 is not None:
-                for i in reversed(range(len(bot4._event_builders))):
-                    ev, cz = bot4._event_builders[i],
-                    if cz.__module__ == name:
-                        del bot4._event_builders[i]
+                        del j._event_builders[i]
     except BaseException:
         raise ValueError
