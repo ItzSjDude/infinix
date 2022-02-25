@@ -58,7 +58,7 @@ def remove_plugin(shortname):
             for i in LOAD_PLUG[shortname]:
                 for j in infclts: 
                     j.remove_event_handler(i)
-             del LOAD_PLUG[shortname]
+            del LOAD_PLUG[shortname]
 
         except BaseException:
             name = f"plugins.{shortname}"
