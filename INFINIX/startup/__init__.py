@@ -25,6 +25,8 @@ async def StartInfinix():
     inf_session()
     for sname in infson:
         client=inf_session(sname)
+        if len(infson)==0:
+           infson.append("alpha")  
         try:
             await client.start()
             client.me = await client.get_me()
@@ -36,7 +38,7 @@ async def StartInfinix():
             await infx_login(sname)
     infclts.remove(tgbot)
     _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
-            
+          
     if (len(infclts))==1:
         msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
         await infx_msg(_loginfx, msg)
