@@ -29,18 +29,20 @@ def infx_assistant(_infxsst=None):
 def infx_plugins(_infxmod=None):
     from pathlib import Path
     from ..database import pdb,pget,pset
-    _rx=pget("alpha", "cmdhandler")
-    if _rx: 
-        rx = _rx
-    else: 
-        rx = "."
-    path = Path(f"plugins/{_infxmod}.py")
-    name = "plugins.{}".format(_infxmod)
-    spec = spec_from_file_location(name, path)
-    _infx = module_from_spec(spec)
+    for client in infclts:
+        
+      _rx=pget("alpha", "cmdhandler")
+      if _rx: 
+          rx = _rx
+      else: 
+          rx = "."
+      path = Path(f"plugins/{_infxmod}.py")
+      name = "plugins.{}".format(_infxmod)
+      spec = spec_from_file_location(name, path)
+      _infx = module_from_spec(spec)
                                    #____infinix__Plugins__Loader____
-    userbot = INFINIX; _infx.bot = bot; _infx.rx = rx; _infx.Infinix = Infinix; _infx.pdb = pdb; _infx.borg = bot; _infx.logger = logging.getLogger(_infxmod)
-    modules["userbot"] = INFINIX; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); bot.infx_cmd[_infxmod] = _infx; modules["infinix"+_infxmod] = _infx; logpl.info("🔥Imported "+_infxmod)
+      userbot = INFINIX; _infx.client = client; _infx.rx = rx; _infx.Infinix = Infinix; _infx.pdb = pdb; _infx.borg = client; _infx.logger = logging.getLogger(_infxmod)
+      modules["userbot"] = INFINIX; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); client.infx_cmd[_infxmod] = _infx; modules["infinix"+_infxmod] = _infx; logpl.info("🔥Imported "+_infxmod)
 
 def load_ext_module(shortname):
     if shortname.endswith("_"):
