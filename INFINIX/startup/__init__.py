@@ -34,6 +34,7 @@ async def StartInfinix():
         except Exception as e:
             infxlog.info(_logstr2_.format(sname))
             await infx_login(sname)
+    infclts.remove(tgbot)
     _loginfx = await tgbot.send_message(pdb.Botlog_chat, msg)
             
     if (len(infclts))==1:
