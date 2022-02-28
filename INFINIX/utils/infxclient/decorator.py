@@ -19,23 +19,25 @@ infxlog = getLogger("Plugin Error?")
 CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
 infclts=[]
 acmd=bcmd=ccmd=dcmd="\."
+ocmd="\!"
 sacmd=sbcmd=cgcmd=sdcmd="\!" 
 Asudo=Bsudo=Csudo=Dsudo=int(1277919761)
 
-cmd1=pget("alpha", "cmdhandler")
-cmd2=pget("beta", "cmdhandler")
-cmd3=pget("gaama", "cmdhandler")
-cmd4=pget("delta", "cmdhandler")
-scmd1=pget("alpha", "sudocmd")
-scmd2=pget("beta", "sudocmd")
-scmd3=pget("gaama", "sudocmd")
-scmd4=pget("delta", "sudocmd")
+cmd1=pget("alpha", "cmd")
+cmd2=pget("beta", "cmd")
+cmd3=pget("gaama", "cmd")
+cmd4=pget("delta", "cmd")
+cmd5=pget("omega", "cmd") 
+scmd1=pget("alpha", "scmd")
+scmd2=pget("beta", "scmd")
+scmd3=pget("gaama", "scmd")
+scmd4=pget("delta", "scmd")
 
 if cmd1: acmd=f"\{cmd1}"
 if cmd2: bcmd=f"\{cmd2}"
 if cmd3: ccmd=f"\{cmd3}"
 if cmd4: dcmd=f"\{cmd4}"
- 
+if cmd5: ocmd=f"\{cmd5}"
 if scmd1: sacmd=f"\{scmd1}"
 if scmd2: sbcmd=f"\{cmd2}"
 if scmd3: sccmd=f"\{scmd3}"
@@ -62,7 +64,7 @@ smx=[Asudo,Bsudo,Csudo,Dsudo]
 
 def Infinix(**args):
     from inspect import stack
-    _plug = "\!";cmx=[];dmx=[]
+    cmx=[];dmx=[]
     args["func"] = lambda e: e.via_bot_id is None
     file_test = Path((stack()[1]).filename).stem.replace(".py", "")
     allow_sudo = args.get("allow_sudo", False)
@@ -86,7 +88,7 @@ def Infinix(**args):
         if bot2: c2=_compile(bcmd, pattern); sc2=_compile(sbcmd, pattern); cmx.append(c2); dmx.append(sc2);
         if bot3: c3=_compile(ccmd, pattern); sc3=_compile(sccmd, pattern); cmx.append(c3); dmx.append(sc3);
         if bot4: c4=_compile(dcmd, pattern); sc4=_compile(sdcmd, pattern); cmx.append(c4); dmx.append(sc4);
-        if tbot: c5=_compile(_plug, pattern); 
+        if tbot: c5=_compile(ocmd, pattern); 
     def decorator(func):
         async def wrapper(check):
             if pdb.Botlog_chat: send_to = pdb.Botlog_chat
