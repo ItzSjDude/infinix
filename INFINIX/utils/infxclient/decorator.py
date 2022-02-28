@@ -86,6 +86,7 @@ def Infinix(**args):
         if bot2: c2=_compile(bcmd, pattern); sc2=_compile(sbcmd, pattern); cmx.append(c2); dmx.append(sc2);
         if bot3: c3=_compile(ccmd, pattern); sc3=_compile(sccmd, pattern); cmx.append(c3); dmx.append(sc3);
         if bot4: c4=_compile(dcmd, pattern); sc4=_compile(sdcmd, pattern); cmx.append(c4); dmx.append(sc4);
+        if tbot: c5=_compile(_plug, pattern); 
     def decorator(func):
         async def wrapper(check):
             if pdb.Botlog_chat: send_to = pdb.Botlog_chat
@@ -160,7 +161,7 @@ def Infinix(**args):
                 i.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
             dmx.clear() 
             smx.clear()
-        if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args))
+        if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args, pattern=c5))
         try:
             LOAD_PLUG[file_test].append(wrapper)
         except Exception:
