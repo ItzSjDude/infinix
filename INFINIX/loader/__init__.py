@@ -39,7 +39,7 @@ def load_infx(_infxmod=None):
                 else: 
                     flik=f"assistant/plugins/{blik}.py"
                  
-                spec = spec_from_file_location("{}".format(flik.replace(".py", ""), Path(flik))
+                spec = spec_from_file_location("{}".format(flik.replace(".py", "")), Path(flik))
                 _infx = module_from_spec(spec)
                 asst = module_from_spec(spec)
                 if glk: 
