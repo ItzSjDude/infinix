@@ -47,10 +47,10 @@ async def StartInfinix():
         await infx_msg(_loginfx, msg)
 
     from ..loader import load_infx 
-    load_infx(["ubplugs","astplugs"])
+    
     try: 
         msg += "Loading Plugins" + "\n"
-        
+        load_infx("ubplugs")
         msg += "**Status**: Successfully Loaded\n\n"
         await infx_msg(_loginfx, msg)
     except Exception as e:
