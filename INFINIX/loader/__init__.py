@@ -8,7 +8,7 @@ import INFINIX
 
 from INFINIX.core import *
 import INFINIX.utils as _utilz
-from pathlib import Path as _asstpath
+from pathlib import Path as
 from logging import getLogger
 logpl = getLogger("Plugins:")
 logpa = getLogger("Assistant:")
