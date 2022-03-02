@@ -32,7 +32,7 @@ def load_infx(_infxmod=None):
             with open(name) as f:
                 path1 = Path(f.name); shortname = path1.stem; flik=glk=None
                 blik=shortname.replace(".py", "")
-                if alt:
+                if alf:
                     flik=f"plugins/{blik}.py"
                     glk=True
                 else: 
