@@ -30,14 +30,15 @@ def load_infx(_infxmod=None):
     for name in files:
         for client in infclts:
             with open(name) as f:
-                path1 = Path(f.name); shortname = path1.stem; flik=glk=None
+                path1 = Path(f.name); shortname = path1.stem; flik=glk=nx=None
                 blik=shortname.replace(".py", "")
                 if alf:
                     flik=f"plugins/{blik}.py"
+                    nx=f"plugins.{blik}"
                     glk=True
                 else: 
                     flik=f"assistant/plugins/{blik}.py"
-                nx=f"plugins.{blik}"
+                    nx=f"assistant.plugins.{blik}"
                 spec = spec_from_file_location(nx,Path(flik))
                 _infx = module_from_spec(spec)
                 asst = module_from_spec(spec)
