@@ -6,17 +6,17 @@ from sqlalchemy.orm import *
 _get = os.environ.get
 
 def start() -> scoped_session:
-    engine = create_engine(_get("DATABASE_URL").replace("postgres", "postgresql"))
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    engine = create_engine(_get("DATAinfb_URL").replace("postgres", "postgresql"))
+    infb.metadata.bind = engine
+    infb.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
-BASE = declarative_base()
+infb = declarative_base()
 SESSION = start()
 
 
-class Pdb(BASE):
+class Pdb(infb):
     __tablename__ = "pdb"
     id = Column(Integer, primary_key=True)
     infx = Column(String(14))
@@ -29,7 +29,7 @@ class Pdb(BASE):
         self.value = value
 
 
-class BotUsers(BASE):
+class BotUsers(infb):
     __tablename__ = "botusers"
     infx_id = Column(String(14), primary_key=True)
 
@@ -37,7 +37,7 @@ class BotUsers(BASE):
         self.infx_id = infx_id
 
 
-class infxChats(BASE):
+class infxChats(infb):
     __tablename__ = "infxTg"
     infx_id = Column(String(14), primary_key=True)
 
@@ -45,7 +45,7 @@ class infxChats(BASE):
         self.infx_id = infx_id
 
 
-class GMute(BASE):
+class GMute(infb):
     __tablename__ = "gmute"
     infx = Column(String(14), primary_key=True)
     sender = Column(String(14), primary_key=True)
@@ -55,7 +55,7 @@ class GMute(BASE):
         self.sender = str(sender)
 
 
-class GBan(BASE):
+class GBan(infb):
     __tablename__ = "gban"
     infx = Column(String(14), primary_key=True)
     sender = Column(String(14), primary_key=True)
@@ -67,7 +67,7 @@ class GBan(BASE):
         self.reason = reason
 
 
-class Mute(BASE):
+class Mute(infb):
     __tablename__ = "mute"
     infx = Column(String(14), primary_key=True)
     sender = Column(String(14), primary_key=True)
@@ -81,7 +81,7 @@ class Mute(BASE):
         
 
 
-class Notes(BASE):
+class Notes(infb):
     __tablename__ = "notes"
     infx = Column(String(14), primary_key=True)
     chat_id = Column(String(14), primary_key=True)
@@ -97,7 +97,7 @@ class Notes(BASE):
         self.f_mesg_id = f_mesg_id
 
 
-class PMPermit(BASE):
+class PMPermit(infb):
     __tablename__ = "pmpermit"
     id = Column(Integer, primary_key=True)
     infx = Column(String(14))
@@ -111,7 +111,7 @@ class PMPermit(BASE):
         
 
 
-class Welcome(BASE):
+class Welcome(infb):
     __tablename__ = "welcome"
     infx = Column(String(14), primary_key=True)
     chat_id = Column(String(14), primary_key=True)
@@ -128,7 +128,7 @@ class Welcome(BASE):
         self.prev_wc = prev_wc
         self.mf_id = mf_id
 
-class Filters(BASE):
+class Filters(infb):
     __tablename__ = "filters"
     id = Column(Integer, primary_key=True)
     infx = Column(String(14))
@@ -156,7 +156,7 @@ class Filters(BASE):
         self.media_access_hash = media_access_hash
         self.media_file_reference = media_file_reference
 
-class Locks(BASE):
+class Locks(infb):
     __tablename__ = "locks"
     infx = Column(String(14), primary_key=True)
     chat_id = Column(String(14), primary_key=True)
