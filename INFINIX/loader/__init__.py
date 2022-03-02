@@ -43,7 +43,7 @@ def load_infx(_infxmod=None):
                 asst = module_from_spec(spec)
                 if glk: 
                     userbot = INFINIX; _infx.bot = client; _infx.rx = rx; _infx.Infinix = Infinix; _infx.pdb = pdb; _infx.borg = client; _infx.logger = logging.getLogger(blik)
-                    modules["userbot"] = INFINIX; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); client.infx_cmd[blik] = _infx; modules["infinix"+_infx] = _infx; logpl.info("🔥Imported "+ blik)
+                    modules["userbot"] = INFINIX; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_infx); client.infx_cmd[blik] = _infx; modules["infinix"+blik] = _infx; logpl.info(f"🔥Imported {blik}")
                 else: 
                     userbot = INFINIX; asst.bot = client; asst.tgbot = tgbot; asst.rx = rx; asst.Infinix = Infinix; asst.pdb = pdb; asst.infxtgbot = infxtgbot; modules['Asst_modules'] = _Modules       
                     infxast[_infxsst] = asst; modules["infinix"+_infxsst] = asst; tgbot.infxast[_infxsst] = asst; spec.loader.exec_module(asst); logpa.info("🔥Imported "+_infxsst)
