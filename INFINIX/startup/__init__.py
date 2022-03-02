@@ -46,13 +46,8 @@ async def StartInfinix():
         msg+="Multi UserMode Detected"+"\n"+f"**Status**: {len(infclts)} Accounts Connected ✅\n\n"
         await infx_msg(_loginfx, msg)
 
-    from ..loader import load_infx
-    if pdb.Asstt:
-        load_infx("ubplugs")
-        load_infx("asstplugs")
-    else: 
-        load_infx("ubplugs")
-
+    from ..loader import load_infx 
+    load_infx(["ubplugs","astplugs"])
     try: 
         msg += "Loading Plugins" + "\n"
         
