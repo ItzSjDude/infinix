@@ -6,7 +6,7 @@ from sqlalchemy.orm import *
 _get = os.environ.get
 
 def start() -> scoped_session:
-    engine = create_engine(_get("DATABASE_URL").replace("postgres", "postgresql"))
+    engine = create_engine(_get("DATAinfb_URL").replace("postgres", "postgresql"))
     infb.metadata.bind = engine
     infb.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
