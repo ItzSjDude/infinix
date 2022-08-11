@@ -558,7 +558,7 @@ class pdb(object):
     Api_hash = _get("Api_hash")
     Bf_uname = _get("Bot_username")
     Omega = _get("Bot_token")
-    Alpha = _get("alpha")
+    Alpha = pget("alpha", "session")
     Beta = pget("beta", "session")
     Gaama = pget("gaama", "session")
     Delta = pget("delta", "session")
