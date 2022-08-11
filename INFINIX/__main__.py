@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from . import StartInfinix
 import asyncio as _asyncio  
 
