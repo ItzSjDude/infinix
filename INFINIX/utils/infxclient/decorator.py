@@ -90,7 +90,7 @@ def Infinix(**args):
         if bot4: c4=_compile(dcmd, pattern); sc4=_compile(sdcmd, pattern); cmx.append(c4); dmx.append(sc4);
         if tbot: c5=_compile(ocmd, pattern); 
     def decorator(func):
-        async def wrapper(cient,check):
+        async def wrapper(client,check):
             if pdb.Botlog_chat: send_to = pdb.Botlog_chat
             if not trigger_on_fwd and check.fwd_from: return
             if check.via_bot_id and not trigger_on_inline: return
@@ -98,7 +98,7 @@ def Infinix(**args):
                 await check.respond("`I don't think this is a group.`")
                 return
             try:
-                await func(check)
+                await func(client,check)
             except events.StopPropagation:
                 raise events.StopPropagation
             except KeyboardInterrupt:
