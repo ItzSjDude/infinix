@@ -24,7 +24,7 @@ async def StartInfinix():
    
     inf_session()
     if len(infson)==1:
-           infson.append("alpha")
+        infson.append("alpha")
     for sname in infson:
         client=inf_session(sname)
         try:
