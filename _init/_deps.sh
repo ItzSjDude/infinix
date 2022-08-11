@@ -15,8 +15,8 @@ _CleanUp() {
 
 _UpSource() {
     echo 'Github: Updating Your INFINIX With ItzSjDude/Infinix' 
-    git clone https://github.com/ItzSjDude/infinix ./ &> /dev/null
-    git clone -b Beta https://github.com/ItzSjDude/PikaBotPlugins ./Temp &> /dev/null
+    git clone https://github.com/ItzSjDude/infinix ./ 
+    git clone -b Beta https://github.com/ItzSjDude/PikaBotPlugins ./Temp
     mkdir ./plugins
     cp ./Temp/plugins/*.py ./plugins
     rm -rf ./Temp
@@ -26,5 +26,5 @@ StartUp() {
     _logo
     _CleanUp
     _UpSource
-    python3 -m INFINIX
+    cd /infinix && python3 -m INFINIX
 }
