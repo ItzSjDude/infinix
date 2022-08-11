@@ -90,7 +90,7 @@ def Infinix(**args):
         if bot4: c4=_compile(dcmd, pattern); sc4=_compile(sdcmd, pattern); cmx.append(c4); dmx.append(sc4);
         if tbot: c5=_compile(ocmd, pattern); 
     def decorator(func):
-        async def wrapper(check):
+        async def wrap(check):
             if pdb.Botlog_chat: send_to = pdb.Botlog_chat
             if not trigger_on_fwd and check.fwd_from: return
             if check.via_bot_id and not trigger_on_inline: return
@@ -155,20 +155,20 @@ def Infinix(**args):
         if not tbot and not sudo:
             d=zip(infclts,cmx)
             for i,j in d:
-                i.add_event_handler(wrapper, events.NewMessage(**args, pattern=j))
+                i.add_event_handler(wrap, events.NewMessage(**args, pattern=j))
             cmx.clear()
         if sudo:
             c=zip(infclts,dmx,smx)
             for i,j,k in c:
-                i.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
+                i.add_event_handler(wrap, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
             dmx.clear() 
             smx.clear()
-        if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args, pattern=c5))
+        if tbot: tgbot.add_event_handler(wrap, events.NewMessage(**args, pattern=c5))
         try:
-            LOAD_PLUG[file_test].append(wrapper)
+            LOAD_PLUG[file_test].append(wrap)
         except Exception:
-            LOAD_PLUG.update({file_test: [wrapper]})
-        return wrapper
+            LOAD_PLUG.update({file_test: [wrap]})
+        return wrap
     return decorator
 
 
