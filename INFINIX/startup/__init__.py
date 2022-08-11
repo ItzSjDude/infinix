@@ -29,7 +29,7 @@ async def StartInfinix():
         client=inf_session(sname)
         try:
             await client.start()
-            await client.safely_remove_all_handlers
+            await client.safely_remove_all_handlers()
             client.me = await client.get_me()
             client.infx_cmd = {}; infclts.append(client);
             client.uid = tutils.get_peer_id(client.me)
