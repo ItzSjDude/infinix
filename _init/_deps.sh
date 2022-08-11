@@ -27,5 +27,5 @@ StartUp() {
     _logo
     _CleanUp
     _UpSource
-    python -m INFINIX
+    python3 -m /INFINIX
 }
