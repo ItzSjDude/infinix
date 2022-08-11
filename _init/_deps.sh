@@ -20,11 +20,12 @@ _UpSource() {
     mkdir ./plugins
     cp ./Temp/plugins/*.py ./plugins
     rm -rf ./Temp
+    cd infinix
 }
 
 StartUp() {
     _logo
     _CleanUp
     _UpSource
-    cd /infinix && python3 -m INFINIX
+    python3 -m INFINIX
 }
