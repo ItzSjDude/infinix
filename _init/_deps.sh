@@ -10,12 +10,12 @@ _logo() {
 
 _CleanUp() {
     echo 'Cleanup : Cleaning old source'
-    rm -rf ./plugins && rm -rf ./* && rm -rf ./.gitignore && rm -rf ./.git
+    rm -rf ./* && rm -rf *
 } 
 
 _UpSource() {
     echo 'Github: Updating Your INFINIX With ItzSjDude/Infinix' 
-    git clone https://github.com/ItzSjDude/infinix 
+    git clone https://github.com/ItzSjDude/infinix.git . 
     git clone -b Beta https://github.com/ItzSjDude/PikaBotPlugins ./Temp
     mkdir ./plugins
     cp ./Temp/plugins/*.py ./plugins
