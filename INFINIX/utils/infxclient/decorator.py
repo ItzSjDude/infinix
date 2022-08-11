@@ -98,7 +98,7 @@ def Infinix(**args):
                 await check.respond("`I don't think this is a group.`")
                 return
             try:
-                await func(client, check)
+                await func(check.client, check)
             except events.StopPropagation:
                 raise events.StopPropagation
             except KeyboardInterrupt:
