@@ -1,2 +1,3 @@
+#!/bin/bash
 . _init/_startup.sh 
 StartUp
