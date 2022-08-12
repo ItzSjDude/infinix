@@ -16,10 +16,10 @@ _CleanUp() {
 _UpSource() {
     echo 'Github: Updating Your INFINIX With ItzSjDude/Infinix'      
     git clone -b main https://github.com/ItzSjDude/infinix.git ./tmpp
-    cp ./tmpp/* .
+    cp -r ./tmpp/* .
     git clone -b Beta https://github.com/ItzSjDude/PikaBotPlugins ./temp
     mkdir ./plugins
-    cp ./temp/plugins/*.py ./plugins
+    cp -r ./temp/plugins/*.py ./plugins
     rm -rf ./temp
     rm -rf ./tmpp
 }
