@@ -5,7 +5,7 @@ Id3="#cGJvdDM"
 Id4="#cGJvdDQ"
 Id5="#cHRnYm90"
 #_____________________
-
+_corelib=None
 from telethon import TelegramClient
 if _corelib: from pyrogram import Client 
 from telethon.sessions import StringSession
