@@ -252,17 +252,4 @@ def time_formatter(milliseconds: int) -> str:
         ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     return tmp[:-2]
 
-
-class Loader():
-    def __init__(self, func=None, **args):
-        self.Var = Var
-        if bot:
-          bot.add_event_handler(func, events.NewMessage(**args))
-        if bot2:
-          bot2.add_event_handler(func, events.NewMessage(**args))
-        if bot3:
-          bot3.add_event_handler(func, events.NewMessage(**args))
-        if bot4:
-          bot4.add_event_handler(func, events.NewMessage(**args))
-        
 __all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress','infclts']
