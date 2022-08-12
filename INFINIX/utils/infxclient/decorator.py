@@ -39,7 +39,7 @@ if cmd3: ccmd=f"\{cmd3}"
 if cmd4: dcmd=f"\{cmd4}"
 if cmd5: ocmd=f"\{cmd5}"
 if scmd1: sacmd=f"\{scmd1}"
-if scmd2: sbcmd=f"\{cmd2}"
+if scmd2: sbcmd=f"\{scmd2}"
 if scmd3: sccmd=f"\{scmd3}"
 if scmd4: sdcmd=f"\{scmd4}"
 
