@@ -58,7 +58,7 @@ async def StartInfinix():
         msg += "Error While Loading\n\n"+ str(e) + "\n\n"; await infx_msg(_loginfx, msg)
 
     msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; await infx_msg(_loginfx, msg)
-    msg += "__-Developed By ItzSjDude With ♥️__"; await infx_msg(_loginfx, msg)
+    msg += "__-Developed By ItzSjDude With ♥️♥️__"; await infx_msg(_loginfx, msg)
        
     for aifc in infclts:  
         if len(argv) not in (1, 3, 4): await aifc.disconnect()  
