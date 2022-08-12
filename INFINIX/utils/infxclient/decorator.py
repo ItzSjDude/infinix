@@ -75,12 +75,12 @@ def Infinix(**args):
     trigger_on_inline = args.get('trigger_on_inline', False)
     sudo = args.get("sudo", False)
     tbot = args.get("tbot", False)
-
+    alx=None
     if "trigger_on_inline" in args: del args['trigger_on_inline']
     if "groups_only" in args: del args['groups_only']
     if "trigger_on_fwd" in args: del args['trigger_on_fwd']
     if tbot: args["incoming"] = True; del args["tbot"]  
-    if sudo: del args["sudo"] 
+    if sudo: alx=True; del args["sudo"] 
     else: args["outgoing"] = True
     if pattern: 
         del args["pattern"]
@@ -151,18 +151,17 @@ def Infinix(**args):
                     )
                 remove("error.log")
 
-
-        if not tbot and not sudo:
-            d=zip(infclts,cmx)
-            for i,j in d:
-                i.add_event_handler(wrap, events.NewMessage(**args, pattern=j))
-            cmx.clear()
-        if sudo:
+        if alx:
             c=zip(infclts,dmx,smx)
             for i,j,k in c:
                 i.add_event_handler(wrap, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
             dmx.clear() 
             smx.clear()
+        if not tbot and not sudo:
+            d=zip(infclts,cmx)
+            for i,j in d:
+                i.add_event_handler(wrap, events.NewMessage(**args, pattern=j))
+            cmx.clear()
         if tbot: tgbot.add_event_handler(wrap, events.NewMessage(**args, pattern=c5))
         try:
             LOAD_PLUG[file_test].append(wrap)
