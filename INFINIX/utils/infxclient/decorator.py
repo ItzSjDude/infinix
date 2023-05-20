@@ -95,13 +95,13 @@ def Infinix(**args):
                 if bot: 
                     apt = re.compile(acmd + infcmd)
                     aspt = re.compile(sacmd + infcmd)
-                elif bot2:
+                if bot2:
                     bpt = re.compile(bcmd + infcmd) 
                     bspt = re.compile(sbcmd + infcmd)
-                elif bot3:
+                if bot3:
                     gpt = re.compile(gcmd + infcmd) 
                     gspt = re.compile(sgcmd + infcmd)
-                elif bot4:
+                if bot4:
                     dpt = re.compile(dcmd + infcmd) 
                     dspt = re.compile(sdcmd + infcmd) 
             else:
@@ -109,13 +109,13 @@ def Infinix(**args):
                 if bot: 
                     apt = re.compile(acmd + pattern)
                     aspt = re.compile(sacmd + pattern)
-                elif bot2:
+                if bot2:
                     bpt = re.compile(bcmd + pattern) 
                     bspt = re.compile(sbcmd + pattern)
-                elif bot3:
+                if bot3:
                     gpt = re.compile(gcmd + pattern) 
                     gspt = re.compile(sgcmd + pattern)
-                elif bot4:
+                if bot4:
                     dpt = re.compile(dcmd + pattern) 
                     dspt = re.compile(sdcmd + pattern) 
     if "trigger_on_inline" in args:
