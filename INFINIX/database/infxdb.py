@@ -1,5 +1,6 @@
 
 from sqlalchemy import *
+from sqlalchemy.types import Varchar
 import os
 from sqlalchemy.ext.declarative import *
 from sqlalchemy.orm import *
