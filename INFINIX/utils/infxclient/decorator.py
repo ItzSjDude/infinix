@@ -15,6 +15,7 @@ from ...infxcl import *
 from pathlib import Path
 import re, time, math, friendly
 import sys
+infclts=[]
 infxlog = getLogger("Plugin Error?")
 CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
 
