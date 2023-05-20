@@ -303,4 +303,4 @@ class Loader():
         if bot4:
           bot4.add_event_handler(func, events.NewMessage(**args))
         
-__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
+__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress','infclts']
