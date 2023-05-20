@@ -1,6 +1,5 @@
 
 from sqlalchemy import *
-from sqlalchemy.types import Varchar
 import os
 from sqlalchemy.ext.declarative import *
 from sqlalchemy.orm import *
@@ -88,7 +87,7 @@ class Notes(infb):
     __tablename__ = "notes"
     infx = Column(String(14), primary_key=True)
     chat_id = Column(String(14), primary_key=True)
-    keyword = Column(Varchar(255), primary_key=True)
+    keyword = Column(Text(255), primary_key=True)
     reply = Column(UnicodeText)
     f_mesg_id = Column(Numeric)
     
