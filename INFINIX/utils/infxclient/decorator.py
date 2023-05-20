@@ -151,18 +151,20 @@ def Infinix(**args):
                     )
                 remove("error.log")
 
-        if alx:
+        if sudo:
             c=zip(infclts,dmx,smx)
             for i,j,k in c:
                 i.add_event_handler(wrap, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
             dmx.clear() 
             smx.clear()
-        if not tbot and not sudo:
+        elif not tbot and not sudo:
             d=zip(infclts,cmx)
             for i,j in d:
                 i.add_event_handler(wrap, events.NewMessage(**args, pattern=j))
             cmx.clear()
-        if tbot: tgbot.add_event_handler(wrap, events.NewMessage(**args, pattern=c5))
+        elif tbot: tgbot.add_event_handler(wrap, events.NewMessage(**args, pattern=c5))
+        else:
+          return None 
         try:
             LOAD_PLUG[file_test].append(wrap)
         except Exception:
