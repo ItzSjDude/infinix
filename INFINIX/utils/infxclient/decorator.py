@@ -20,7 +20,7 @@ CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG =
 infclts=[]
 acmd=bcmd=ccmd=dcmd="\."
 ocmd="\!"
-sacmd=sbcmd=cgcmd=sdcmd="\!" 
+sacmd=sbcmd=sccmd=sdcmd="\!" 
 Asudo=Bsudo=Csudo=Dsudo=int(1277919761)
 
 cmd1=pget("alpha", "cmd")
