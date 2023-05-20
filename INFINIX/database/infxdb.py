@@ -8,7 +8,7 @@ _get = os.environ.get
 def start() -> scoped_session:
     db = _get("DATABASE_URL")
     dburl=None
-    if not "postgresql" in db: 
+    if "postgres" in db: 
       dburl = _get("DATABASE_URL").replace("postgres", "postgresql")
     else:
       dburl = db
