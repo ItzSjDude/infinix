@@ -19,7 +19,7 @@ def inf_session(name=None):
     if name=="omega": return tgbot
     if name=="alpha": return bot
     if name=="beta": return bot2
-    if name=="gama": return bot3
+    if name=="gaama": return bot3
     if name=="delta": return bot4 
 
 __all__=['inf_session','infson']
