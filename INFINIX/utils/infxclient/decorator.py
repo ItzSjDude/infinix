@@ -9,7 +9,7 @@ from asyncio import create_subprocess_shell as asyncsubshell, subprocess as asyn
 from os import remove
 from traceback import format_exc
 from logging import getLogger
-from ...core import *
+from ...core import * 
 from ...database import *
 from ...infxcl import *
 from pathlib import Path
@@ -17,17 +17,15 @@ import re, time, math, friendly
 import sys
 infxlog = getLogger("Plugin Error?")
 CMD_LIST = {};InfAsst = {};CMD_HELP = {};Pika_Cmd = {};INT_PLUG = "";LOAD_PLUG = {};COUNT_MSG = 0;USERS = {};COUNT_PM = {};LASTMSG = {};const = {};ISAFK = False;LASTMSG = {};ISAFK = False
-infclts=[]
-acmd=bcmd=ccmd=dcmd="\."
-ocmd="\!"
-sacmd=sbcmd=sccmd=sdcmd="\!" 
-Asudo=Bsudo=Csudo=Dsudo=int(1277919761)
+
+acmd=bcmd=gcmd=dcmd="\."
+sacmd=sbcmd=sgcmd=sdcmd="\!" 
+Asudo=Bsudo=Gsudo=Dsudo=int(1277919761)
 
 cmd1=pget("alpha", "cmd")
 cmd2=pget("beta", "cmd")
 cmd3=pget("gaama", "cmd")
 cmd4=pget("delta", "cmd")
-cmd5=pget("omega", "cmd") 
 scmd1=pget("alpha", "scmd")
 scmd2=pget("beta", "scmd")
 scmd3=pget("gaama", "scmd")
@@ -35,65 +33,104 @@ scmd4=pget("delta", "scmd")
 
 if cmd1: acmd=f"\{cmd1}"
 if cmd2: bcmd=f"\{cmd2}"
-if cmd3: ccmd=f"\{cmd3}"
+if cmd3: gcmd=f"\{cmd3}"
 if cmd4: dcmd=f"\{cmd4}"
-if cmd5: ocmd=f"\{cmd5}"
+ 
 if scmd1: sacmd=f"\{scmd1}"
-if scmd2: sbcmd=f"\{scmd2}"
-if scmd3: sccmd=f"\{scmd3}"
+if scmd2: sbcmd=f"\{cmd2}"
+if scmd3: sgcmd=f"\{scmd3}"
 if scmd4: sdcmd=f"\{scmd4}"
 
 if pdb.Asudo is not None: Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
 if pdb.Bsudo is not None: Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
-if pdb.Csudo is not None: Csudo=list(set(int(x) for x in (pdb.Csudo).split(" ")))
+if pdb.Gsudo is not None: Gsudo=list(set(int(x) for x in (pdb.Gsudo).split(" ")))
 if pdb.Dsudo is not None: Dsudo=list(set(int(x) for x in (pdb.Dsudo).split(" ")))
-
-def _compile(hndlr,ptrn):
-  a=None
-  if ptrn.startswith("^/"):
-     a= re.compile(hndlr + ptrn.replace("^/", "\\/"),)
-  elif ptrn.startswith("\\#"):
-     a= re.compile(ptrn)
-  elif ptrn.startswith("^."):
-     a=re.compile(hndlr + ptrn.replace("^.", ""))
-  else:
-    a=re.compile(hndlr + ptrn)
-  return a
-
-smx=[Asudo,Bsudo,Csudo,Dsudo]
 
 def Infinix(**args):
     from inspect import stack
-    cmx=[];dmx=[]
+
+
+    _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
     file_test = Path((stack()[1]).filename).stem.replace(".py", "")
+    pattern = args.get("pattern", None)
     allow_sudo = args.get("allow_sudo", False)
-    pattern = args.get("pattern", False)
     args.get('disable_edited', True)
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
-    sudo = args.get("sudo", False)
     tbot = args.get("tbot", False)
-    alx=None
-    if "trigger_on_inline" in args: del args['trigger_on_inline']
-    if "groups_only" in args: del args['groups_only']
-    if "trigger_on_fwd" in args: del args['trigger_on_fwd']
-    if tbot: args["incoming"] = True; del args["tbot"]  
-    if sudo: alx=True; del args["sudo"] 
-    else: args["outgoing"] = True
-    if pattern: 
-        del args["pattern"]
-        if bot: c1=_compile(acmd, pattern); sc1=_compile(sacmd, pattern); cmx.append(c1); dmx.append(sc1);
-        if bot2: c2=_compile(bcmd, pattern); sc2=_compile(sbcmd, pattern); cmx.append(c2); dmx.append(sc2);
-        if bot3: c3=_compile(ccmd, pattern); sc3=_compile(sccmd, pattern); cmx.append(c3); dmx.append(sc3);
-        if bot4: c4=_compile(dcmd, pattern); sc4=_compile(sdcmd, pattern); cmx.append(c4); dmx.append(sc4);
-        if tbot: c5=_compile(ocmd, pattern); 
+    sudo = args.get("sudo", False)
+    lol=True
+    if tbot: 
+        args["incoming"] = True
+        del args["tbot"]  
+    if sudo:
+        del args["sudo"]
+    else: 
+        args["outgoing"] = True
+    if pattern is not None:
+        if tbot:
+            if pattern.startswith("^/"):
+                infxtg = pattern.replace("^/", "\\/")
+                args["pattern"] = re.compile(infxtg)
+            elif pattern.startswith("\\#"):
+                args["pattern"] = re.compile(pattern)
+            else:
+                args["pattern"] = re.compile(_plug + pattern)
+                infxtg = _plug + pattern
+            try:
+                InfAsst[file_test].append(infxtg)
+            except BaseException:
+                InfAsst.update({file_test: [infxtg]})
+        else: 
+            dpt=gpt=bpt=apt= None;dspt=gspt=bspt=aspt= None 
+            if pattern.startswith("\\#"):
+                del args["pattern"]
+                dpt=gpt=bpt=apt=re.compile(pattern) 
+            if pattern.startswith("^."):
+                del args["pattern"]
+                infcmd = pattern.replace("^.", "")
+                if bot: 
+                    apt = re.compile(acmd + infcmd)
+                    aspt = re.compile(sacmd + infcmd)
+                if bot2:
+                    bpt = re.compile(bcmd + infcmd) 
+                    bspt = re.compile(sbcmd + infcmd)
+                if bot3:
+                    gpt = re.compile(gcmd + infcmd) 
+                    gspt = re.compile(sgcmd + infcmd)
+                if bot4:
+                    dpt = re.compile(dcmd + infcmd) 
+                    dspt = re.compile(sdcmd + infcmd) 
+            else:
+                del args["pattern"]
+                if bot: 
+                    apt = re.compile(acmd + pattern)
+                    aspt = re.compile(sacmd + pattern)
+                if bot2:
+                    bpt = re.compile(bcmd + pattern) 
+                    bspt = re.compile(sbcmd + pattern)
+                if bot3:
+                    gpt = re.compile(gcmd + pattern) 
+                    gspt = re.compile(sgcmd + pattern)
+                if bot4:
+                    dpt = re.compile(dcmd + pattern) 
+                    dspt = re.compile(sdcmd + pattern) 
+    if "trigger_on_inline" in args:
+        del args['trigger_on_inline']
+    if "groups_only" in args:
+        del args['groups_only']
+    if "trigger_on_fwd" in args:
+        del args['trigger_on_fwd']
     def decorator(func):
-        async def wrap(check):
-            if pdb.Botlog_chat: send_to = pdb.Botlog_chat
-            if not trigger_on_fwd and check.fwd_from: return
-            if check.via_bot_id and not trigger_on_inline: return
+        async def wrapper(check):
+            if pdb.Botlog_chat:
+                send_to = pdb.Botlog_chat
+            if not trigger_on_fwd and check.fwd_from:
+                return
+            if check.via_bot_id and not trigger_on_inline:
+                return
             if groups_only and not check.is_group:
                 await check.respond("`I don't think this is a group.`")
                 return
@@ -108,10 +145,12 @@ def Infinix(**args):
                 from .wrapper import infxgvar
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 text = "**Sorry, I encountered a error!**\n"
+                link = "[https://t.me/PikachuUserbotSupport](Pikabot Support Chat)"
                 text += "If you wanna you can report it"
+                text += f"- just forward this message to {link}.\n"
                 text += "I won't log anything except the fact of error and date\n"
                 ftext = "\nDisclaimer:\nThis file uploaded ONLY here, "
-                ftext += "we logged only fact of error aand date, "
+                ftext += "we logged only fact of error and date, "
                 ftext += "we respect your privacy, "
                 ftext += "you may not report this error if you've "
                 ftext += "any confidential data here, no one will see your data "
@@ -146,30 +185,26 @@ def Infinix(**args):
                 else:
                     await check.client.send_file(
                         check.chat_id,
-                        "error.txt",
+                        "error.log",
                         caption=text,
                     )
                 remove("error.log")
-
+        if not tbot and not sudo:
+            if bot: bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
+            if bot2: bot2.add_event_handler(wrapper, events.NewMessage(**args, pattern=bpt))
+            if bot3: bot3.add_event_handler(wrapper, events.NewMessage(**args, pattern=gpt))
+            if bot4: bot4.add_event_handler(wrapper, events.NewMessage(**args, pattern=dpt))
         if sudo:
-            c=zip(infclts,dmx,smx)
-            for i,j,k in c:
-                i.add_event_handler(wrap, events.NewMessage(**args, incoming=True, pattern=j, from_users=k)) 
-            dmx.clear() 
-            smx.clear()
-        elif not tbot and not sudo:
-            d=zip(infclts,cmx)
-            for i,j in d:
-                i.add_event_handler(wrap, events.NewMessage(**args, pattern=j))
-            cmx.clear()
-        elif tbot: tgbot.add_event_handler(wrap, events.NewMessage(**args, pattern=c5))
-        else:
-          return None 
+             if bot: bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
+             if bot2: bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
+             if bot3: bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
+             if bot4: bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=dspt, from_users=Dsudo))
+        if tbot: tgbot.add_event_handler(wrapper, events.NewMessage(**args))
         try:
-            LOAD_PLUG[file_test].append(wrap)
+            LOAD_PLUG[file_test].append(wrapper)
         except Exception:
-            LOAD_PLUG.update({file_test: [wrap]})
-        return wrap
+            LOAD_PLUG.update({file_test: [wrapper]})
+        return wrapper
     return decorator
 
 
@@ -254,4 +289,17 @@ def time_formatter(milliseconds: int) -> str:
         ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     return tmp[:-2]
 
-__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress','infclts']
+
+class Loader():
+    def __init__(self, func=None, **args):
+        self.Var = Var
+        if bot:
+          bot.add_event_handler(func, events.NewMessage(**args))
+        if bot2:
+          bot2.add_event_handler(func, events.NewMessage(**args))
+        if bot3:
+          bot3.add_event_handler(func, events.NewMessage(**args))
+        if bot4:
+          bot4.add_event_handler(func, events.NewMessage(**args))
+        
+__all__=['Infinix', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
