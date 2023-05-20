@@ -11,7 +11,7 @@ def start() -> scoped_session:
     if "postgres" in db: 
       dburl = _get("DATABASE_URL").replace("postgres", "postgresql")
     else:
-      dburl = db
+      dburl = _get("CLEARDB_DATABASE_URL")
     engine = create_engine(dburl)
     infb.metadata.bind = engine
     infb.metadata.create_all(engine)
