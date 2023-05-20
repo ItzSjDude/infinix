@@ -8,7 +8,7 @@ _get = os.environ.get
 def start() -> scoped_session:
   
     dburl = _get("CLEARDB_DATABASE_URL")
-    engine = create_engine(dburl,pool_size=2, pool_recycle=1200)
+    engine = create_engine(dburl,pool_pre_ping=True)
    
     infb.metadata.bind = engine
     infb.metadata.create_all(engine)
