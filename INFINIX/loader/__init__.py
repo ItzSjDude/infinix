@@ -54,7 +54,8 @@ def load_infx(_infxmod=None):
             
             
            
- def load_ext_module(shortname):
+        
+def load_ext_module(shortname):
     if shortname.endswith("_"):
         from pathlib import Path
         path = Path(f"plugins/{shortname}.py")
