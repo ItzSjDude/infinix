@@ -68,8 +68,6 @@ async def StartInfinix():
             
             
 def i(): 
-   o = asyncio.new_event_loop()
-   asyncio.set_event_loop(o)
-   asyncio.get_event_loop().run_until_complete(StartInfinix())
+    _asyncio.get_event_loop().run_until_complete(StartInfinix())
 
 __all__=["StartInfinix","i"]
