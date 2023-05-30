@@ -63,5 +63,13 @@ async def StartInfinix():
     for aifc in infclts:  
         if len(argv) not in (1, 3, 4): await aifc.disconnect()  
         else: await aifc.run_until_disconnected()
+            
+            
+            
+            
+def i(): 
+   o = asyncio.new_event_loop()
+   asyncio.set_event_loop(o)
+   asyncio.get_event_loop().run_until_complete(StartInfinix())
 
-__all__=["StartInfinix"]
+__all__=["StartInfinix","i"]
