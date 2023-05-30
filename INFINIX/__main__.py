@@ -1,9 +1,17 @@
 #!/usr/bin/python3
-from . import StartInfinix
-import asyncio as _asyncio  
+from . import StartInfinix as g
+import sys,
+import asyncio as o
 
 if __name__ == "__main__": 
-    
-    _loop = _asyncio.new_event_loop
-    _asyncio.set_event_loop(_loop)
-    _asyncio.get_event_loop().run_until_complete(StartInfinix())
+    if sys.version_info < (3, 10):
+        a = o.get_event_loop()
+    else:
+        try:
+            a = o.get_running_loop()
+        except RuntimeError:
+            a = o.new_event_loop()
+
+    o.set_event_loop(a)
+    a.run_until_complete(g())
+   
