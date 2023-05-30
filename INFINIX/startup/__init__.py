@@ -41,10 +41,10 @@ async def StartInfinix():
           
     if (len(infclts))==1:
         msg+="Single UserMode Detected"+"\n"+"**Status**: Connected ✅\n\n"
-        await infx_msg(_loginfx, msg)
+#         await infx_msg(_loginfx, msg)
     else: 
         msg+="Multi UserMode Detected"+"\n"+f"**Status**: {len(infclts)} Accounts Connected ✅\n\n"
-        await infx_msg(_loginfx, msg)
+#         await infx_msg(_loginfx, msg)
 
     from ..loader import load_infx 
     
@@ -52,14 +52,15 @@ async def StartInfinix():
         msg += "Loading Plugins" + "\n"
         load_infx("ubplugs")
         msg += "**Status**: Successfully Loaded\n\n"
-        await infx_msg(_loginfx, msg)
+#         await infx_msg(_loginfx, msg)
     except Exception as e:
         infxlog.exception(e)
-        msg += "Error While Loading\n\n"+ str(e) + "\n\n"; await infx_msg(_loginfx, msg)
+        msg += "Error While Loading\n\n"+ str(e) + "\n\n";
 
-    msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; await infx_msg(_loginfx, msg)
-    msg += "__-Developed By ItzSjDude With ♥️♥️__"; await infx_msg(_loginfx, msg)
-       
+    msg += "**✘Infinix Boot Process Finished✘**"+"\n\n"; 
+    asyncio.sleep(2)
+    msg += "__-Developed By ItzSjDude With ♥️♥️__";
+    await infx_msg(_loginfx, msg)   
     for aifc in infclts:  
         if len(argv) not in (1, 3, 4): await aifc.disconnect()  
         else: await aifc.run_until_disconnected()
