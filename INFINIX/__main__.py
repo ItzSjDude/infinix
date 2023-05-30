@@ -3,6 +3,6 @@ from . import StartInfinix
 import sys
 import asyncio as o
 
-if __name__ == "__main__": 
-       o.run(StartInfinix())
+if __name__ == "__main__":
+  i()       
    
