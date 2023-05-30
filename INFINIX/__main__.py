@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from . import StartInfinix as g
-import sys,
-import asyncio as o
+import sys,asyncio as o
 
 if __name__ == "__main__": 
     if sys.version_info < (3, 10):
