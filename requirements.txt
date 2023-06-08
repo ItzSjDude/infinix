@@ -52,7 +52,7 @@ telegraph
 asyncurban
 urbandict
 wikipedia>=1.4.0
-youtube-dl
+yt-dlp
 jikanpy
 psutil
 pyLyrics
