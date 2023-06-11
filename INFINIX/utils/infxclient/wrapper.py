@@ -46,7 +46,7 @@ async def infx_msg(_infx, text, _infx_=None, parse_mode=None, link_preview=None)
             
           return await _infx.edit(text, parse_mode=parse_mode, link_preview=link_preview) 
       else:
-          return await _infx.edit(text)
+          return await _infx.edit(text,parse_mode="md")
   else:
       if _reply: 
           return await _reply.reply(text, parse_mode=parse_mode,link_preview=link_preview)
