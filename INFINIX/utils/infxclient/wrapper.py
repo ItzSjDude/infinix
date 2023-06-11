@@ -34,7 +34,7 @@ async def infxgvar(_infx_, value=None):
       return pget(a, value)
   else: 
       return a
-async def infx_msg(_infx, text, _infx_=None, parse_mode=None, link_preview=None):
+async def infx_msg(_infx, text, _infx_, parse_mode=None, link_preview=None):
   parse_mode = parse_mode or "md"; link_preview = link_preview or False
   try: 
      _reply = await _infx.get_reply_message()
