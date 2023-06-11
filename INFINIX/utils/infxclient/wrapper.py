@@ -36,21 +36,21 @@ async def infxgvar(_infx_, value=None):
       return a
 async def infx_msg(_infx, text, _infx_=None, parse_mode=None, link_preview=None):
   try:
-    parse_mode = parse_mode or "md"; link_preview = link_preview or False
-    try: 
-       _reply = await _infx.get_reply_message()
-    except: 
-       pass 
-       _reply = False 
-    if _infx_ is None:
-        return await _infx.edit(text, parse_mode=parse_mode, link_preview=link_preview) 
-    else:
-        if _reply: 
-            return await _reply.reply(text, parse_mode=parse_mode,link_preview=link_preview)
-        if not _reply: 
-            return await _infx.reply(text, parse_mode=parse_mode,link_preview=link_preview)
-   except:
-    pass
+      parse_mode = parse_mode or "md"; link_preview = link_preview or False
+      try: 
+         _reply = await _infx.get_reply_message()
+      except: 
+         pass 
+         _reply = False 
+      if _infx_ is None:
+          return await _infx.edit(text, parse_mode=parse_mode, link_preview=link_preview) 
+      else:
+          if _reply: 
+              return await _reply.reply(text, parse_mode=parse_mode,link_preview=link_preview)
+          if not _reply: 
+              return await _infx.reply(text, parse_mode=parse_mode,link_preview=link_preview)
+  except:
+      pass
 #©Infinix </Kang/Copy with Credits else u will be called ultra gey/> 
 async def is_infxtg(_infx_=None):
   _infx = await _infx_.client.get_me()
