@@ -83,7 +83,7 @@ async def get_infx_tg(_infx_):
   if tg_id == tgbot.uid: 
       return True 
 
-async def infchvar(self,var,msgid=bool):
+async def infchvar(self,var,msgid):
   svar=await infxgvar(self,var)
   if not svar:
     entit = (await self.client.get_entity("@InfinixResources")).id 
